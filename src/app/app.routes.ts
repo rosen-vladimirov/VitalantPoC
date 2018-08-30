@@ -8,11 +8,12 @@ export const routes: Routes = [
     canActivate: [LoggedInAuthGuard],
     children: [
       { path: "", loadChildren: "./home/home.module#HomeModule" },
-      { path: "search", loadChildren: "./search/search.module#SearchModule" },
+      //{ path: "", redirectTo: "products", pathMatch: "full" },
       {
-        path: "featured",
-        loadChildren: "./featured/featured.module#FeaturedModule"
+        path: "products",
+        loadChildren: "./products/products.module#ProductsModule"
       },
+
       {
         path: "settings",
         loadChildren: "./settings/settings.module#SettingsModule"

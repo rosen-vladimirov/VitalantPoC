@@ -4,12 +4,17 @@ import { User, Kinvey } from "kinvey-nativescript-sdk";
 
 @Injectable()
 export class DataService {
+  productsStore = Kinvey.DataStore.collection("products");
+
+  getProducts(): any {
+    return this.productsStore.find();
+  }
   isLoggedIn: any;
   user: any;
   constructor() {
     Kinvey.init({
-      appKey: "kid_SJ1onE9IQ",
-      appSecret: "c91c2b6a68ff4540bf485f2e54beff0e"
+      appKey: "kid_rJXgUpSvm",
+      appSecret: "d4b642d14aa9466eaad256675e793af1"
     });
     this.isLoggedIn = new BehaviorSubject<boolean>(
       Kinvey.User.getActiveUser() != null
@@ -29,7 +34,7 @@ export class DataService {
         this.isLoggedIn.next(true);
         console.log(user);
         this.user.next(user);
-        return Promise.resolve(Kinvey.User.getActiveUser());
+        return Promise.resolve(user);
       });
     }
   }

@@ -8,6 +8,7 @@ import {
   SlideInOnTopTransition
 } from "nativescript-ui-sidedrawer";
 import { filter } from "rxjs/operators";
+import { DataService } from "./data.service";
 //import { DataService } from "~/data.service";
 
 @Component({
@@ -21,7 +22,7 @@ export class AppComponent implements OnInit {
   user;
 
   constructor(
-    //private service: DataService,
+    private service: DataService,
     private router: Router,
     private routerExtensions: RouterExtensions
   ) {
@@ -29,7 +30,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //this.user = this.service.user;
+    this.user = this.service.user;
 
     //this.gesturesEnabled = this.service.isLoggedIn;
     this._activatedUrl = "/";
