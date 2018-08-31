@@ -1,11 +1,13 @@
 import { Injectable } from "@angular/core";
 import { Observable, BehaviorSubject } from "rxjs";
-import { User, Kinvey } from "kinvey-nativescript-sdk";
+import { User, Kinvey, DataStoreType } from "kinvey-nativescript-sdk";
 
 @Injectable()
 export class DataService {
   productsStore = Kinvey.DataStore.collection("products");
   tasksStore = Kinvey.DataStore.collection("tasks");
+  accountsStore = Kinvey.DataStore.collection("accounts", DataStoreType.Sync);
+
   selectedFile: any;
   isLoggedIn: any;
   user: any;
@@ -22,8 +24,23 @@ export class DataService {
   }
 
   getTasks(): any {
-    //this.tasksStore.push();
     return this.tasksStore.find();
+  }
+  async pullAccountData() {
+    let num = await this.accountsStore.pendingSyncCount();
+    if (num.count == 0) {
+      return this.accountsStore.pull();
+    }
+    Promise.resolve();
+  }
+  getAccounts(): any {
+    return this.accountsStore.find();
+  }
+  addAccounts(accounts): any {
+    return Promise.all(accounts.map(item => this.accountsStore.save(item)));
+  }
+  pushAccountData(): any {
+    return this.accountsStore.sync();
   }
   toggleTaskStatus(task): any {
     task.completed = !task.completed;

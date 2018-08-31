@@ -11,10 +11,17 @@
     -->
     <ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()" ios.position="left">
     </ActionItem>
-    <Label class="action-bar-title" text="Home"></Label>
+    <ActionItem ios.systemIcon="4" ios.position="right" (tap)="addMe()"></ActionItem>
+    <ActionItem ios.systemIcon="13" ios.position="right" (tap)="syncMe()"></ActionItem>
+
+    <Label class="action-bar-title" text="Accounts"></Label>
 </ActionBar>
 
-<StackLayout class="page page-content">
-    <Image src="https://devcenter.kinvey.com/images/Progress_Kinvey_Primary.png" id="logo" width="75%" margin="20 0 0 0"></Image>
-    <Label margin="20" horizontalAlignment="center" textWrap="true" class="Tagline" text="We got your backend"></Label>
-</StackLayout>
+<ListView class="list-group" [items]="items | async">
+    <ng-template let-item="item">
+        <GridLayout class="list-group-item" rows="auto, *" columns="*">
+            <Label row="0" [text]="item.accountname" class="list-group-item-heading"></Label>
+            <Label row="1" [text]="item.accountcompany" class="list-group-item-text"></Label>
+        </GridLayout>
+    </ng-template>
+</ListView>

@@ -20,6 +20,10 @@ export const routes: Routes = [
       {
         path: "tasks",
         loadChildren: "./tasks/tasks.module#TasksModule"
+      },
+      {
+        path: "offline",
+        loadChildren: "./offline/offline.module#OfflineModule"
       }
     ]
   },
