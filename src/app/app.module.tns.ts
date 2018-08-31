@@ -4,6 +4,7 @@ import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { NativeScriptUISideDrawerModule } from "nativescript-ui-sidedrawer/angular/side-drawer-directives";
+import { NativeScriptFormsModule } from "nativescript-angular/forms";
 
 import { DataService } from "./data.service";
 import { LoggedInAuthGuard, AnonAuthGuard } from "./auth-guard";
@@ -19,7 +20,8 @@ import { LoggedInAuthGuard, AnonAuthGuard } from "./auth-guard";
   imports: [
     NativeScriptModule,
     AppRoutingModule,
-    NativeScriptUISideDrawerModule
+    NativeScriptUISideDrawerModule,
+    NativeScriptFormsModule
   ],
   providers: [DataService, LoggedInAuthGuard, AnonAuthGuard],
   bootstrap: [AppComponent],

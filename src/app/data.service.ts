@@ -29,6 +29,10 @@ export class DataService {
     task.completed = !task.completed;
     return this.tasksStore.save(task);
   }
+  saveTask(task): any {
+    task.completed = false;
+    return this.tasksStore.save(task);
+  }
 
   getFiles() {
     var q = new Kinvey.Query();

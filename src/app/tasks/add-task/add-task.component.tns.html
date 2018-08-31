@@ -4,8 +4,8 @@
 <GridLayout class="page page-content" rows="*,auto">
     <StackLayout class="form">
 
-        <TextField [(ngModel)]='description' hint="Wash Dishes" class="input input-border m-10"></TextField>
-        <DatePicker verticalAlignment="center"></DatePicker>
+        <TextField [(ngModel)]='action' hint="Wash Dishes" class="input input-border m-10"></TextField>
+        <DatePicker [(ngModel)]="duedate"></DatePicker>
     </StackLayout>
     <Button row="1" class="btn btn-primary" text="Save" (tap)="save()"></Button>
 
