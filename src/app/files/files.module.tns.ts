@@ -1,16 +1,16 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 
-import { ProductsRoutingModule } from "./products-routing.module";
+import { FilesRoutingModule } from "./files-routing.module";
 import { NativeScriptCommonModule } from "nativescript-angular/common";
 import {
-  PROVIDERS_DECLARATIONS,
+  ROUTES,
   COMPONENT_DECLARATIONS,
-  ROUTES
-} from "./products.common";
+  PROVIDERS_DECLARATIONS
+} from "./files.common";
 
 @NgModule({
-  imports: [ProductsRoutingModule, NativeScriptCommonModule],
+  imports: [FilesRoutingModule, NativeScriptCommonModule],
   declarations: COMPONENT_DECLARATIONS,
   schemas: [NO_ERRORS_SCHEMA]
 })
-export class ProductsModule {}
+export class FilesModule {}

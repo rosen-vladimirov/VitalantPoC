@@ -5,12 +5,11 @@ import { User, Kinvey } from "kinvey-nativescript-sdk";
 @Injectable()
 export class DataService {
   productsStore = Kinvey.DataStore.collection("products");
-
-  getProducts(): any {
-    return this.productsStore.find();
-  }
+  tasksStore = Kinvey.DataStore.collection("tasks");
+  selectedFile: any;
   isLoggedIn: any;
   user: any;
+
   constructor() {
     Kinvey.init({
       appKey: "kid_rJXgUpSvm",
@@ -20,6 +19,25 @@ export class DataService {
       Kinvey.User.getActiveUser() != null
     );
     this.user = new BehaviorSubject<User>(Kinvey.User.getActiveUser());
+  }
+
+  getTasks(): any {
+    //this.tasksStore.push();
+    return this.tasksStore.find();
+  }
+  toggleTaskStatus(task): any {
+    task.completed = !task.completed;
+    return this.tasksStore.save(task);
+  }
+
+  getFiles() {
+    var q = new Kinvey.Query();
+    q.equalTo("mimeType", "application/pdf");
+    return Kinvey.Files.find(q);
+  }
+
+  getProducts(): any {
+    return this.productsStore.find();
   }
 
   login(name, password): Promise<User> {

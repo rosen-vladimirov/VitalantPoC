@@ -8,15 +8,18 @@ export const routes: Routes = [
     canActivate: [LoggedInAuthGuard],
     children: [
       { path: "", loadChildren: "./home/home.module#HomeModule" },
-      //{ path: "", redirectTo: "products", pathMatch: "full" },
       {
         path: "products",
         loadChildren: "./products/products.module#ProductsModule"
       },
-
+      { path: "files", loadChildren: "./files/files.module#FilesModule" },
       {
         path: "settings",
         loadChildren: "./settings/settings.module#SettingsModule"
+      },
+      {
+        path: "tasks",
+        loadChildren: "./tasks/tasks.module#TasksModule"
       }
     ]
   },
@@ -25,4 +28,4 @@ export const routes: Routes = [
     loadChildren: "./login/login.module#LoginModule",
     canActivate: [AnonAuthGuard]
   }
-];
+]; //{ path: "", redirectTo: "products", pathMatch: "full" },
