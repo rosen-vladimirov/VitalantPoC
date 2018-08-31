@@ -8,12 +8,18 @@ import { NativeScriptFormsModule } from "nativescript-angular/forms";
 
 import { DataService } from "./data.service";
 import { LoggedInAuthGuard, AnonAuthGuard } from "./auth-guard";
+import { NativeChatModule } from "@progress-nativechat/nativescript-nativechat/angular";
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from "nativescript-angular/forms";
 
 // Uncomment and add to NgModule imports  if you need to use the HTTP wrapper
 // import { NativeScriptHttpClientModule } from 'nativescript-angular/http-client';
+import * as platform from "platform";
+declare var GMSServices: any;
+if (platform.isIOS) {
+  GMSServices.provideAPIKey("AIzaSyCSln6LZF0vbnI23oGPpoQsYLbETImR3QQ");
+}
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,7 +27,8 @@ import { LoggedInAuthGuard, AnonAuthGuard } from "./auth-guard";
     NativeScriptModule,
     AppRoutingModule,
     NativeScriptUISideDrawerModule,
-    NativeScriptFormsModule
+    NativeScriptFormsModule,
+    NativeChatModule
   ],
   providers: [DataService, LoggedInAuthGuard, AnonAuthGuard],
   bootstrap: [AppComponent],

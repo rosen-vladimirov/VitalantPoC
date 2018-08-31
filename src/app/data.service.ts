@@ -28,10 +28,10 @@ export class DataService {
   }
   async pullAccountData() {
     let num = await this.accountsStore.pendingSyncCount();
+    console.log(num);
     if (num.count == 0) {
       return this.accountsStore.pull();
-    }
-    Promise.resolve();
+    } else Promise.resolve();
   }
   getAccounts(): any {
     return this.accountsStore.find();

@@ -17,16 +17,17 @@ export const routes: Routes = [
         path: "settings",
         loadChildren: "./settings/settings.module#SettingsModule"
       },
-      {
-        path: "tasks",
-        loadChildren: "./tasks/tasks.module#TasksModule"
-      },
+      { path: "tasks", loadChildren: "./tasks/tasks.module#TasksModule" },
       {
         path: "offline",
         loadChildren: "./offline/offline.module#OfflineModule"
-      }
+      },
+      { path: "map", loadChildren: "./map/map.module#MapModule" },
+      { path: "chat", loadChildren: "./chat/chat.module#ChatModule" },
+      { path: "ar", loadChildren: "./ar/ar.module#ArModule" }
     ]
   },
+
   {
     path: "login",
     loadChildren: "./login/login.module#LoginModule",
