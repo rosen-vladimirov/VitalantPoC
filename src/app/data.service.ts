@@ -29,7 +29,8 @@ export class DataService {
   async pullAccountData() {
     let num = await this.accountsStore.pendingSyncCount();
     console.log(num);
-    if (num.count == 0) {
+    if (<any>num === 0) {
+      console.log("pulling");
       return this.accountsStore.pull();
     } else Promise.resolve();
   }
