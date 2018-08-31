@@ -31,4 +31,12 @@ export class LoginComponent implements OnInit {
       alert("Invalid credentials");
     }
   }
+  async loginWithMIC() {
+    try {
+      await this.dataService.loginWithMIC();
+      this.router.navigate([""], { clearHistory: true });
+    } catch {
+      alert("Invalid credentials");
+    }
+  }
 }

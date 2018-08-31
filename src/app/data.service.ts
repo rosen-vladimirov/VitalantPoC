@@ -85,7 +85,7 @@ export class DataService {
       return Promise.resolve(Kinvey.User.getActiveUser());
     } else {
       return Kinvey.User.loginWithMIC(
-        "http://localhost:4200",
+        "http://localhost:8100",
         Kinvey.AuthorizationGrant.AuthorizationCodeLoginPage,
         { version: "v2" } as any
       );
