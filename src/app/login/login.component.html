@@ -1,6 +1,11 @@
-<ActionBar class="action-bar" title="Login">
+<ActionBar title="Login" class="action-bar">
 </ActionBar>
 
-<StackLayout class="page page-content">
-    <Button (tap)="login()" class="btn btn-primary" text="Login"></Button>
-</StackLayout>
+<GridLayout class="page page-content" rows="*,auto">
+    <StackLayout class="form">
+        <TextField [(ngModel)]='username' hint="user" class="input input-border m-10"></TextField>
+        <TextField secure="true" hint="password" [(ngModel)]="password" class="input input-border m-10"></TextField>
+        <Button class="btn btn-primary" text="Login" (tap)="login()"></Button>
+        <Button class="btn btn-primary" text="Login with MIC" (tap)="login()"></Button>
+    </StackLayout>
+</GridLayout>

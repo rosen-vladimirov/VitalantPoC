@@ -10,6 +10,8 @@ import { DataService } from "../data.service";
   templateUrl: "./login.component.html"
 })
 export class LoginComponent implements OnInit {
+  username = "ignacio";
+  password = "ignacio";
   constructor(
     private dataService: DataService,
     private router: RouterExtensions
@@ -21,10 +23,12 @@ export class LoginComponent implements OnInit {
     // Init your component properties here.
   }
 
-  login() {
-    console.log("huh");
-    this.dataService.login("ignacio", "ignacio").then(data => {
+  async login() {
+    try {
+      await this.dataService.login(this.username, this.password);
       this.router.navigate([""], { clearHistory: true });
-    });
+    } catch {
+      alert("Invalid credentials");
+    }
   }
 }

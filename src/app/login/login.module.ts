@@ -3,9 +3,14 @@ import { NativeScriptCommonModule } from "nativescript-angular/common";
 
 import { LoginRoutingModule } from "../login/login-routing.module";
 import { LoginComponent } from "../login/login.component";
+import { NativeScriptFormsModule } from "nativescript-angular/forms";
 
 @NgModule({
-  imports: [NativeScriptCommonModule, LoginRoutingModule],
+  imports: [
+    NativeScriptCommonModule,
+    LoginRoutingModule,
+    NativeScriptFormsModule
+  ],
   declarations: [LoginComponent],
   schemas: [NO_ERRORS_SCHEMA]
 })

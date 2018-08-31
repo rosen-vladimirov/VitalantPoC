@@ -14,4 +14,6 @@
     <Label class="action-bar-title" text="AR"></Label>
 </ActionBar>
 
-<Button text="augmented-reality works!" class="btn btn-primary"></Button>
+<AR debugLevel="FEATURE_POINTS" detectPlanes="true" showStatistics="true" [planeMaterial]="planeMaterial" (planeTapped)="planeTapped($event)">
+    <!-- you can add layouts here if you like to overlay the AR view -->
+</AR>
