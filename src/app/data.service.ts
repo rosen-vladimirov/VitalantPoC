@@ -30,6 +30,7 @@ export class DataService {
     let num = await this.accountsStore.pendingSyncCount();
     console.log(num);
     if (<any>num === 0) {
+      //THIS IS A BUG IN THE d.ts
       console.log("pulling");
       return this.accountsStore.pull();
     } else Promise.resolve();
