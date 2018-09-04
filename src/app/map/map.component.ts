@@ -15,11 +15,7 @@ registerElement("MapView", () => MapView);
 export class MapComponent implements OnInit {
   constructor() {}
 
-  ngOnInit() {
-    alert(
-      "Google Maps not implemented yet as there might be a bug with the plugin"
-    );
-  }
+  ngOnInit() {}
   onDrawerButtonTap(): void {
     const sideDrawer = <RadSideDrawer>app.getRootView();
     sideDrawer.showDrawer();
