@@ -20,7 +20,15 @@ export class SettingsComponent implements OnInit {
   }
   logout() {
     this.dataService.logout().then(() => {
-      this.router.navigate(["login"], { clearHistory: true });
+      this.router.navigate(["login"], {
+        clearHistory: true,
+        animated: true,
+        transition: {
+          name: "slideBottom",
+          duration: 350,
+          curve: "ease"
+        }
+      });
     });
   }
 

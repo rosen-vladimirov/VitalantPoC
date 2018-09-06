@@ -26,7 +26,15 @@ export class LoginComponent implements OnInit {
   async login() {
     try {
       await this.dataService.login(this.username, this.password);
-      this.router.navigate([""], { clearHistory: true });
+      this.router.navigate([""], {
+        clearHistory: true,
+        animated: true,
+        transition: {
+          name: "slideTop",
+          duration: 350,
+          curve: "ease"
+        }
+      });
     } catch {
       alert("Invalid credentials");
     }
@@ -34,7 +42,15 @@ export class LoginComponent implements OnInit {
   async loginWithMIC() {
     try {
       await this.dataService.loginWithMIC();
-      this.router.navigate([""], { clearHistory: true });
+      this.router.navigate([""], {
+        clearHistory: true,
+        animated: true,
+        transition: {
+          name: "slideTop",
+          duration: 350,
+          curve: "ease"
+        }
+      });
     } catch {
       alert("Invalid credentials");
     }
