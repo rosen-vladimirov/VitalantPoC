@@ -1,14 +1,20 @@
 import { Component, OnInit } from "@angular/core";
+import { DrawerHelper } from "../utils/drawer-helper";
 
 @Component({
-  selector: "app-home",
-  templateUrl: "./home.component.html",
-  styleUrls: ["./home.component.scss"]
+  selector: "Home",
+  templateUrl: "./home.component.html"
 })
 export class HomeComponent implements OnInit {
-  title = "angular-fdgfasdasd";
+  constructor() {
+    // Use the component constructor to inject providers.
+  }
 
-  constructor() {}
+  ngOnInit(): void {
+    // Init your component properties here.
+  }
 
-  ngOnInit() {}
+  onDrawerButtonTap(): void {
+    DrawerHelper.show();
+  }
 }
