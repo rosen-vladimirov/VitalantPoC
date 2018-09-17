@@ -25,6 +25,12 @@ import { NativeScriptFormsModule } from "nativescript-angular/forms";
 // import { NativeScriptHttpClientModule } from 'nativescript-angular/http-client';
 import { NativeChatModule } from "@progress-nativechat/nativescript-nativechat/angular";
 
+import * as platform from "platform";
+declare var GMSServices: any;
+if (platform.isIOS) {
+  GMSServices.provideAPIKey("AIzaSyCSln6LZF0vbnI23oGPpoQsYLbETImR3QQ");
+}
+
 @NgModule({
   declarations: [
     AppComponent,
