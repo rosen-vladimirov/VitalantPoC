@@ -13,11 +13,13 @@ import { ArComponent } from "./ar/ar.component";
 import { LoginComponent } from "./login/login.component";
 import { AddTaskComponent } from "./tasks/add-task/add-task.component";
 import { FileDetailsComponent } from "./files/file-details/file-details.component";
+import { LayoutComponent } from "./layout/layout.component";
 
 export const routes: Routes = [
   {
     path: "",
     canActivate: [LoggedInGuard],
+    component: LayoutComponent,
     children: [
       { path: "", redirectTo: "home", pathMatch: "full" },
       { path: "home", component: HomeComponent },

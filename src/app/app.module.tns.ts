@@ -15,6 +15,7 @@ import { ArComponent } from "./ar/ar.component";
 import { LoginComponent } from "./login/login.component";
 import { AddTaskComponent } from "./tasks/add-task/add-task.component";
 import { FileDetailsComponent } from "./files/file-details/file-details.component";
+import { LayoutComponent } from "./layout/layout.component";
 
 import { NativeScriptUISideDrawerModule } from "nativescript-ui-sidedrawer/angular/side-drawer-directives";
 
@@ -45,7 +46,8 @@ if (platform.isIOS) {
     SettingsComponent,
     TasksComponent,
     AddTaskComponent,
-    FileDetailsComponent
+    FileDetailsComponent,
+    LayoutComponent
   ],
   imports: [
     NativeScriptModule,
