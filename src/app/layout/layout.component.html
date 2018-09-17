@@ -21,6 +21,18 @@
           <i class="icon ion-md-list menu-logo mx-2"></i>Products
         </a>
       </li>
+      <li class="nav-item pr-4" routerLinkActive="selected" [routerLinkActiveOptions]="{exact:
+                        true}">
+        <a routerLink="/files" class="nav-link menu-item">
+          <i class="icon ion-md-list menu-logo mx-2"></i>Files
+        </a>
+      </li>
+      <li class="nav-item pr-4" routerLinkActive="selected" [routerLinkActiveOptions]="{exact:
+                          true}">
+        <a routerLink="/map" class="nav-link menu-item">
+          <i class="icon ion-md-list menu-logo mx-2"></i>Map
+        </a>
+      </li>
     </ul>
 
     <a class="mr-2" (click)="logout()" style="cursor: pointer; color:white">

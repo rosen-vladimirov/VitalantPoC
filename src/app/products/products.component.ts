@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { DataService } from "../data.service";
 import { DrawerHelper } from "../utils/drawer-helper";
+import { Observable } from "rxjs";
 
 @Component({
   selector: "app-products",
@@ -8,7 +9,7 @@ import { DrawerHelper } from "../utils/drawer-helper";
   styleUrls: ["./products.component.scss"]
 })
 export class ProductsComponent implements OnInit {
-  items;
+  items: Observable<any>;
   constructor(private service: DataService) {}
 
   ngOnInit() {

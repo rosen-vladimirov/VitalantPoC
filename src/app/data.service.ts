@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Kinvey } from "./utils";
-import { BehaviorSubject } from "rxjs";
+import { BehaviorSubject, Observable } from "rxjs";
 
 @Injectable({
   providedIn: "root"
@@ -64,7 +64,7 @@ export class DataService {
     return Kinvey.Files.find(q);
   }
 
-  getProducts(): any {
+  getProducts(): Observable<any> {
     return this.productsStore.find();
   }
 
