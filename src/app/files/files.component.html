@@ -1,3 +1,8 @@
-<p>
-  files works!
-</p>
+<div class="row">
+  <div class="col-sm-12 mt-4">
+    <h1>Files</h1>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let p of items | async">{{p.prettyname}}</li>
+    </ul>
+  </div>
+</div>
