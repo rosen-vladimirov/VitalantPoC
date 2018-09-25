@@ -13,7 +13,7 @@
         <GridLayout row="2" rows="*, *" columns="50, *" class="form-container">
             <Label row="0" rowSpan="2" col="0" class="ion" text="&#xf4c8;"></Label>
             <Label row="0" col="1" class="upper-label" text="PASSWORD"></Label>
-            <TextField row="1" col="1" [(ngModel)]="password"></TextField>
+            <TextField secure="true" hint="password" row="1" col="1" [(ngModel)]="password"></TextField>
         </GridLayout>
 
         <ActivityIndicator rowSpan="3" [busy]="processing"></ActivityIndicator>

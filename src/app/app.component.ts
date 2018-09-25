@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.user = this.service.user;
+    this.user = this.service.username;
     this.gesturesEnabled = this.service.isLoggedIn;
     // this._activatedUrl = "/";
     // this._sideDrawerTransition = new SlideInOnTopTransition();

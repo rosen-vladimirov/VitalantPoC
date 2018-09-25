@@ -18,7 +18,7 @@ export class LayoutComponent implements OnInit {
         token: "46d2e012-32d4-4e32-95c1-c7e2d889579a"
       }
     };
-    nativechat.init(settings);
+    //nativechat.init(settings);
   }
   async logout() {
     await this.service.logout();

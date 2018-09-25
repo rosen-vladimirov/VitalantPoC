@@ -10,6 +10,7 @@ import { Router } from "../utils";
 export class LoginComponent implements OnInit {
   username = "ignacio";
   password = "ignacio";
+  processing: boolean;
   constructor(private dataService: DataService, private router: Router) {
     // Use the component constructor to inject providers.
   }
@@ -20,18 +21,24 @@ export class LoginComponent implements OnInit {
 
   async login() {
     try {
+      this.processing = true;
       await this.dataService.login(this.username, this.password);
       this.router.navigate([""], <any>{ clearHistory: true });
     } catch {
       alert("Invalid credentials");
+    } finally {
+      this.processing = false;
     }
   }
   async loginWithMIC() {
     try {
+      this.processing = true;
       await this.dataService.loginWithMIC();
       this.router.navigate([""]);
     } catch {
       alert("Invalid credentials");
+    } finally {
+      this.processing = false;
     }
   }
 }

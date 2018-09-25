@@ -1,21 +1,22 @@
 import { Injectable } from "@angular/core";
 import { Kinvey } from "./utils";
 import { BehaviorSubject, Observable } from "rxjs";
+import { map } from "rxjs/operators";
 
 @Injectable({
   providedIn: "root"
 })
 export class DataService {
-  productsStore = Kinvey.DataStore.collection("products");
-  tasksStore = Kinvey.DataStore.collection("tasks");
-  accountsStore = Kinvey.DataStore.collection(
+  private productsStore = Kinvey.DataStore.collection("products");
+  private tasksStore = Kinvey.DataStore.collection("tasks");
+  private accountsStore = Kinvey.DataStore.collection(
     "accounts",
     Kinvey.DataStoreType.Sync
   );
-
-  selectedFile: any;
-  isLoggedIn: BehaviorSubject<boolean>;
-  user: any;
+  public selectedFile: any;
+  public isLoggedIn: BehaviorSubject<boolean>;
+  private user: BehaviorSubject<Kinvey.User>;
+  public username: Observable<string>;
 
   constructor() {
     Kinvey.init({
@@ -26,6 +27,19 @@ export class DataService {
       Kinvey.User.getActiveUser() != null
     );
     this.user = new BehaviorSubject<Kinvey.User>(Kinvey.User.getActiveUser());
+    this.username = this.user.pipe(
+      map(kinveyUser => {
+        if (kinveyUser) {
+          if ((<any>kinveyUser.data)._socialIdentity) {
+            return (<any>kinveyUser.data)._socialIdentity.kinveyAuth.id;
+          } else {
+            return kinveyUser.username;
+          }
+        } else {
+          return "";
+        }
+      })
+    );
   }
 
   getTasks(): any {
@@ -78,7 +92,7 @@ export class DataService {
       return Kinvey.User.login(name, password).then(user => {
         console.log("we back");
         this.isLoggedIn.next(true);
-        console.log(user);
+        //console.log(user);
         this.user.next(user);
         return Promise.resolve(user);
       });
@@ -89,11 +103,13 @@ export class DataService {
     if (Kinvey.User.getActiveUser()) {
       return Promise.resolve(Kinvey.User.getActiveUser());
     } else {
-      return Kinvey.User.loginWithMIC(
-        "http://localhost:8100",
-        Kinvey.AuthorizationGrant.AuthorizationCodeLoginPage,
-        { version: "v2" } as any
-      );
+      return Kinvey.User.loginWithMIC("http://localhost:8100").then(user => {
+        console.log("we back");
+        this.isLoggedIn.next(true);
+        //console.log(user);
+        this.user.next(user);
+        return Promise.resolve(user);
+      });
     }
   }
   logout(): Promise<void> {
