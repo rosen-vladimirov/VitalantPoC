@@ -73,7 +73,6 @@ $sidedrawer-list-icon-size: 20;
       padding-left: $sidedrawer-list-item-offset-left;
       label {
         vertical-align: center;
-        color: $blue-dark;
       }
       .fa {
         width: $sidedrawer-list-icon-size;
@@ -87,4 +86,33 @@ $sidedrawer-list-icon-size: 20;
       }
     }
   }
+}
+Page {
+  font-family: Avenir, "Nunito-Regular";
+  background-color: #383741;
+  color: black;
+}
+.fancy-background {
+  background-image: url("~/images/background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.ion {
+  font-family: Ionicons, ionicons;
+  font-size: 60;
+}
+.bold {
+  font-family: Avenir, "Nunito-Bold";
+}
+
+.action-bar {
+  padding: 5 0;
+  background-color: #383741;
+}
+.action-bar-logo {
+  height: 55;
+  color: white;
+  horizontal-align: center;
+  vertical-align: middle;
 }

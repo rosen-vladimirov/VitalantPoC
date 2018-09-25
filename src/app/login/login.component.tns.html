@@ -1,11 +1,28 @@
-<ActionBar title="Login" class="action-bar">
-</ActionBar>
+<StackLayout [class.ios]="isIOS" [class.android]="isAndroid">
+    <Image class="logo" src="~/app/images/logo.png"></Image>
+    <Label class="h1" text="ACME SDE"></Label>
+    <GridLayout rows="auto, auto, auto">
+        <GridLayout row="0" rows="*, *" columns="50, *" class="form-container">
+            <Label row="0" rowSpan="2" col="0" class="ion" text="&#xf47d;"></Label>
+            <Label row="0" col="1" class="upper-label" text="USER"></Label>
+            <TextField row="1" col="1" [(ngModel)]="username"></TextField>
+        </GridLayout>
 
-<GridLayout class="page page-content" rows="*,auto">
-    <StackLayout class="form">
-        <TextField [(ngModel)]='username' hint="user" class="input input-border m-10"></TextField>
-        <TextField secure="true" hint="password" [(ngModel)]="password" class="input input-border m-10"></TextField>
-        <Button class="btn btn-primary" text="Login" (tap)="login()"></Button>
-        <Button class="btn btn-primary" text="Login with MIC" (tap)="loginWithMIC()"></Button>
-    </StackLayout>
-</GridLayout>
+        <StackLayout row="1" class="hr"></StackLayout>
+
+        <GridLayout row="2" rows="*, *" columns="50, *" class="form-container">
+            <Label row="0" rowSpan="2" col="0" class="ion" text="&#xf4c8;"></Label>
+            <Label row="0" col="1" class="upper-label" text="PASSWORD"></Label>
+            <TextField row="1" col="1" [(ngModel)]="password"></TextField>
+        </GridLayout>
+
+        <ActivityIndicator rowSpan="3" [busy]="processing"></ActivityIndicator>
+    </GridLayout>
+
+    <StackLayout class="hr"></StackLayout>
+
+    <Button [isEnabled]="!processing" text="Sign in With Kinvey" (tap)="login()"></Button>
+
+    <Label class="or" text="OR"></Label>
+    <Label class="sign-in" text="COMPANY SIGN IN" (tap)="loginWithMIC()"></Label>
+</StackLayout>
