@@ -2,12 +2,13 @@ import { Injectable } from "@angular/core";
 import { Kinvey } from "./utils";
 import { BehaviorSubject, Observable } from "rxjs";
 import { map } from "rxjs/operators";
+import { Config } from "./config";
 
 @Injectable({
   providedIn: "root"
 })
 export class DataService {
-  private productsStore = Kinvey.DataStore.collection("products");
+  private myDataStore = Kinvey.DataStore.collection(Config.collectionName);
   private tasksStore = Kinvey.DataStore.collection("tasks");
   private accountsStore = Kinvey.DataStore.collection(
     "accounts",
@@ -78,8 +79,8 @@ export class DataService {
     return Kinvey.Files.find(q);
   }
 
-  getProducts(): Observable<any> {
-    return this.productsStore.find();
+  getItems(): Observable<any> {
+    return this.myDataStore.find();
   }
 
   login(name, password): Promise<Kinvey.User> {

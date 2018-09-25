@@ -19,7 +19,7 @@ http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawe
         <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/products')"
           (tap)="onNavItemTap('/products')">
           <Label col="0" text="&#xf0cb;" class="fa"></Label>
-          <Label col="1" text="Products" class="p-r-10"></Label>
+          <Label col="1" [text]="title" class="p-r-10"></Label>
         </GridLayout>
         <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/files')"
           (tap)="onNavItemTap('/files')">

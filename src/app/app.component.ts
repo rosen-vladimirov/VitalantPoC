@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "./utils";
 import { DataService } from "./data.service";
 import { DrawerHelper } from "./utils/drawer-helper";
+import { Config } from "./config";
 
 @Component({
   selector: "app-root",
@@ -13,6 +14,7 @@ export class AppComponent implements OnInit {
   //private _sideDrawerTransition: DrawerTransitionBase;
   gesturesEnabled;
   user;
+  title: string;
 
   constructor(private service: DataService, private router: Router) {
     // Use the component constructor to inject services.
@@ -21,6 +23,9 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.user = this.service.username;
     this.gesturesEnabled = this.service.isLoggedIn;
+    this.title =
+      Config.collectionName.charAt(0).toUpperCase() +
+      Config.collectionName.slice(1);
     // this._activatedUrl = "/";
     // this._sideDrawerTransition = new SlideInOnTopTransition();
     // this.router.events
