@@ -1,6 +1,6 @@
 <StackLayout [class.ios]="isIOS" [class.android]="isAndroid">
-    <Image class="logo" src="~/app/images/logo.png"></Image>
-    <Label class="h1" text="ACME SDE"></Label>
+    <Image class="logo" [src]="logo"></Image>
+    <Label class="h1" [text]="title"></Label>
     <GridLayout rows="auto, auto, auto">
         <GridLayout row="0" rows="*, *" columns="50, *" class="form-container">
             <Label row="0" rowSpan="2" col="0" class="ion" text="&#xf47d;"></Label>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { DataService } from "../data.service";
 import { Router } from "../utils";
+import { Config } from "../config";
 
 @Component({
   selector: "Login",
@@ -11,12 +12,16 @@ export class LoginComponent implements OnInit {
   username = "ignacio";
   password = "ignacio";
   processing: boolean;
+  logo: string;
+  title: string;
   constructor(private dataService: DataService, private router: Router) {
     // Use the component constructor to inject providers.
   }
 
   ngOnInit(): void {
     // Init your component properties here.
+    this.logo = Config.appLogo;
+    this.title = Config.appTitle;
   }
 
   async login() {
