@@ -14,7 +14,7 @@
     <Label class="action-bar-title" [text]="title"></Label>
 </ActionBar>
 
-<ListView class="list-group" [items]="items | async">
+<ListView class="list-group" [items]="items">
     <ng-template let-item="item">
         <GridLayout class="list-group-item" rows="*" columns="auto, *">
             <Image row="0" col="0" [src]="item.img" class="thumb img-rounded"></Image>

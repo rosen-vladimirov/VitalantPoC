@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, NgZone } from "@angular/core";
 import { DataService } from "../data.service";
 import { DrawerHelper } from "../utils/drawer-helper";
 import { Observable } from "rxjs";
@@ -10,12 +10,16 @@ import { Config } from "../config";
   styleUrls: ["./products.component.scss"]
 })
 export class ProductsComponent implements OnInit {
-  items: Observable<any>;
+  items;
   title: string;
-  constructor(private service: DataService) {}
+  constructor(private service: DataService, private zone: NgZone) {}
 
   ngOnInit() {
-    this.items = this.service.getItems();
+    this.service.getItems().subscribe(data => {
+      this.zone.run(() => {
+        this.items = data;
+      });
+    });
     this.title =
       Config.collectionName.charAt(0).toUpperCase() +
       Config.collectionName.slice(1);
