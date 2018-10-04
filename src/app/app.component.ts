@@ -14,7 +14,13 @@ export class AppComponent implements OnInit {
   //private _sideDrawerTransition: DrawerTransitionBase;
   gesturesEnabled;
   user;
-  title: string;
+  producsPageTitle: string;
+  tasksPageTitle: string;
+  offlinePageTitle: string;
+  mapPageTitle: string;
+  filesPageTitle: string;
+  arPageTitle: string;
+  chatPageTitle: string;
 
   constructor(private service: DataService, private router: Router) {
     // Use the component constructor to inject services.
@@ -23,9 +29,15 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.user = this.service.username;
     this.gesturesEnabled = this.service.isLoggedIn;
-    this.title =
-      Config.collectionName.charAt(0).toUpperCase() +
-      Config.collectionName.slice(1);
+    this.producsPageTitle = Config.productsPageTitle;
+    this.tasksPageTitle = Config.tasksPageTitle;
+    this.filesPageTitle = Config.filesPageTitle;
+    this.mapPageTitle = Config.mapPageTitle;
+    this.offlinePageTitle = Config.offlinePageTitle;
+    this.mapPageTitle = Config.mapPageTitle;
+    this.chatPageTitle = Config.chatPageTitle;
+    this.arPageTitle = Config.arPageTitle;
+
     // this._activatedUrl = "/";
     // this._sideDrawerTransition = new SlideInOnTopTransition();
     // this.router.events

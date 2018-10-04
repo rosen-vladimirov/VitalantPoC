@@ -8,10 +8,12 @@ import { Config } from "./config";
   providedIn: "root"
 })
 export class DataService {
-  private myDataStore = Kinvey.DataStore.collection(Config.collectionName);
-  private tasksStore = Kinvey.DataStore.collection("tasks");
+  private myDataStore = Kinvey.DataStore.collection(
+    Config.productsCollectionName
+  );
+  private tasksStore = Kinvey.DataStore.collection(Config.taskCollectionName);
   private accountsStore = Kinvey.DataStore.collection(
-    "accounts",
+    Config.accountsCollectionName,
     Kinvey.DataStoreType.Sync
   );
   public selectedFile: any;

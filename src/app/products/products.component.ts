@@ -20,9 +20,7 @@ export class ProductsComponent implements OnInit {
         this.items = data;
       });
     });
-    this.title =
-      Config.collectionName.charAt(0).toUpperCase() +
-      Config.collectionName.slice(1);
+    this.title = Config.productsPageTitle;
   }
   onDrawerButtonTap(): void {
     DrawerHelper.show();
