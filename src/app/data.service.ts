@@ -23,8 +23,8 @@ export class DataService {
 
   constructor() {
     Kinvey.init({
-      appKey: "kid_rJXgUpSvm",
-      appSecret: "d4b642d14aa9466eaad256675e793af1"
+      appKey: Config.appKey,
+      appSecret: Config.appSecret
     });
     this.isLoggedIn = new BehaviorSubject<boolean>(
       Kinvey.User.getActiveUser() != null

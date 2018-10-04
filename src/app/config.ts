@@ -13,4 +13,6 @@ export class Config {
   static arPageTitle: string = "Augment Reality";
   static offlinePageTitle: string = "Offline";
   static chatPageTitle: string = "Chat";
+  static appKey: any = "kid_ZJk02vOUFg";
+  static appSecret: any = "c1a32d5b3c474d0fa20a6f33fef396d5";
 }
