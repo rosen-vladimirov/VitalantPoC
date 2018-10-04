@@ -4,7 +4,6 @@ import { BrowserModule } from "@angular/platform-browser";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { HomeComponent } from "./home/home.component";
-import { ArComponent } from "./ar/ar.component";
 import { ChatComponent } from "./chat/chat.component";
 import { FilesComponent } from "./files/files.component";
 import { LoginComponent } from "./login/login.component";
@@ -15,8 +14,9 @@ import { SettingsComponent } from "./settings/settings.component";
 import { TasksComponent } from "./tasks/tasks.component";
 import { AddTaskComponent } from "./tasks/add-task/add-task.component";
 import { FileDetailsComponent } from "./files/file-details/file-details.component";
-import { ReactiveFormsModule, FormsModule } from "@angular/forms";
-import { LayoutComponent } from './layout/layout.component';
+import { FormsModule } from "@angular/forms";
+import { LayoutComponent } from "./layout/layout.component";
+import { ArComponent } from "./ar/ar.component";
 
 @NgModule({
   declarations: [
@@ -32,7 +32,8 @@ import { LayoutComponent } from './layout/layout.component';
     TasksComponent,
     AddTaskComponent,
     FileDetailsComponent,
-    LayoutComponent
+    LayoutComponent,
+    ArComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

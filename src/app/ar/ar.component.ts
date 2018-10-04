@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { DataService } from "../data.service";
 import { DrawerHelper } from "../utils/drawer-helper";
-import { AR, ARMaterial, ARPlaneTappedEventData } from "nativescript-ar";
 
 @Component({
   selector: "app-ar",
@@ -9,7 +8,7 @@ import { AR, ARMaterial, ARPlaneTappedEventData } from "nativescript-ar";
   styleUrls: ["./ar.component.scss"]
 })
 export class ArComponent implements OnInit {
-  planeMaterial = <ARMaterial>{
+  planeMaterial = {
     diffuse: "white",
     transparency: 0.2
   };
