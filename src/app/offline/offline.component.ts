@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { DataService } from "../data.service";
 import { DrawerHelper } from "../utils/drawer-helper";
+import { Config } from "../config";
 @Component({
   selector: "app-offline",
   templateUrl: "./offline.component.html",
@@ -8,11 +9,13 @@ import { DrawerHelper } from "../utils/drawer-helper";
 })
 export class OfflineComponent implements OnInit {
   items;
+  title: any;
   constructor(private service: DataService) {}
 
   async ngOnInit() {
+    this.title = Config.offlinePageTitle;
     await this.service.pullAccountData();
-    this.items = this.service.getAccounts();
+    this.items = this.service.getSyncAccounts();
   }
   onDrawerButtonTap(): void {
     DrawerHelper.show();
@@ -28,15 +31,15 @@ export class OfflineComponent implements OnInit {
       };
       myaccounts.push(thisaccount);
     }
-    await this.service.addAccounts(myaccounts);
-    this.items = this.service.getAccounts();
+    await this.service.addSyncAccounts(myaccounts);
+    this.items = this.service.getSyncAccounts();
     alert("all done");
   }
 
   async syncMe() {
     console.log("syncng");
-    await this.service.pushAccountData();
-    this.items = this.service.getAccounts();
+    await this.service.pushSyncAccountData();
+    this.items = this.service.getSyncAccounts();
     alert("all sync done");
   }
 }

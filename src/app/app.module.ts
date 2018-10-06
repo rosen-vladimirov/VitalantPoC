@@ -17,6 +17,8 @@ import { FileDetailsComponent } from "./files/file-details/file-details.componen
 import { FormsModule } from "@angular/forms";
 import { LayoutComponent } from "./layout/layout.component";
 import { ArComponent } from "./ar/ar.component";
+import { AccountsComponent } from './accounts/accounts.component';
+import { AccountDetailsComponent } from './accounts/account-details/account-details.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { ArComponent } from "./ar/ar.component";
     AddTaskComponent,
     FileDetailsComponent,
     LayoutComponent,
-    ArComponent
+    ArComponent,
+    AccountsComponent,
+    AccountDetailsComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

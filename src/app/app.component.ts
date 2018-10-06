@@ -21,6 +21,7 @@ export class AppComponent implements OnInit {
   filesPageTitle: string;
   arPageTitle: string;
   chatPageTitle: string;
+  accountsPageTitle: string;
 
   constructor(private service: DataService, private router: Router) {
     // Use the component constructor to inject services.
@@ -30,6 +31,8 @@ export class AppComponent implements OnInit {
     this.user = this.service.username;
     this.gesturesEnabled = this.service.isLoggedIn;
     this.producsPageTitle = Config.productsPageTitle;
+    this.accountsPageTitle = Config.accountsPageTitle;
+    
     this.tasksPageTitle = Config.tasksPageTitle;
     this.filesPageTitle = Config.filesPageTitle;
     this.mapPageTitle = Config.mapPageTitle;

@@ -3,18 +3,24 @@ import { Kinvey } from "./utils";
 import { BehaviorSubject, Observable } from "rxjs";
 import { map } from "rxjs/operators";
 import { Config } from "./config";
+import { ThrowStmt } from "@angular/compiler";
+import { THROW_IF_NOT_FOUND } from "@angular/core/src/di/injector";
 
 @Injectable({
   providedIn: "root"
 })
 export class DataService {
+
   private myDataStore = Kinvey.DataStore.collection(
     Config.productsCollectionName
   );
   private tasksStore = Kinvey.DataStore.collection(Config.taskCollectionName);
-  private accountsStore = Kinvey.DataStore.collection(
-    Config.accountsCollectionName,
+  private offlineAccountsStore = Kinvey.DataStore.collection(
+    Config.offlineAccountsCollectionName,
     Kinvey.DataStoreType.Sync
+  );
+  private accountsStore = Kinvey.DataStore.collection(
+    Config.offlineAccountsCollectionName
   );
   public selectedFile: any;
   public isLoggedIn: BehaviorSubject<boolean>;
@@ -49,22 +55,30 @@ export class DataService {
     return this.tasksStore.find();
   }
   async pullAccountData() {
-    let num = await this.accountsStore.pendingSyncCount();
+    let num = await this.offlineAccountsStore.pendingSyncCount();
     console.log(num);
     if (<any>num === 0) {
       //THIS IS A BUG IN THE d.ts
       console.log("pulling");
-      return this.accountsStore.pull();
+      return this.offlineAccountsStore.pull();
     } else Promise.resolve();
   }
-  getAccounts(): any {
+  getSyncAccounts(): any {
+    return this.offlineAccountsStore.find();
+  }
+  getAccounts(id?:string): any {
+    if(id){
+      return this.accountsStore.findById(id);
+    }
+    else{
     return this.accountsStore.find();
+    }
   }
-  addAccounts(accounts): any {
-    return Promise.all(accounts.map(item => this.accountsStore.save(item)));
+  addSyncAccounts(accounts): any {
+    return Promise.all(accounts.map(item => this.offlineAccountsStore.save(item)));
   }
-  pushAccountData(): any {
-    return this.accountsStore.sync();
+  pushSyncAccountData(): any {
+    return this.offlineAccountsStore.sync();
   }
   toggleTaskStatus(task): any {
     task.completed = !task.completed;
