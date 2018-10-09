@@ -3,13 +3,23 @@ import { Kinvey } from "./utils";
 import { BehaviorSubject, Observable } from "rxjs";
 import { map } from "rxjs/operators";
 import { Config } from "./config";
-import { ThrowStmt } from "@angular/compiler";
-import { THROW_IF_NOT_FOUND } from "@angular/core/src/di/injector";
 
 @Injectable({
   providedIn: "root"
 })
 export class DataService {
+  deleteItem(): any {
+    return this.tasksStore.remove();
+  }
+  getFilesCount(): any {
+    return Kinvey.Files.count();
+  }
+  getPendingCount(): Promise<{ count: number }> {
+    return this.accountsStore.pendingSyncCount();
+  }
+  getCount(): Observable<any> {
+    return this.accountsStore.count();
+  }
 
   private myDataStore = Kinvey.DataStore.collection(
     Config.productsCollectionName
@@ -66,16 +76,17 @@ export class DataService {
   getSyncAccounts(): any {
     return this.offlineAccountsStore.find();
   }
-  getAccounts(id?:string): any {
-    if(id){
+  getAccounts(id?: string): any {
+    if (id) {
       return this.accountsStore.findById(id);
-    }
-    else{
-    return this.accountsStore.find();
+    } else {
+      return this.accountsStore.find();
     }
   }
   addSyncAccounts(accounts): any {
-    return Promise.all(accounts.map(item => this.offlineAccountsStore.save(item)));
+    return Promise.all(
+      accounts.map(item => this.offlineAccountsStore.save(item))
+    );
   }
   pushSyncAccountData(): any {
     return this.offlineAccountsStore.sync();
