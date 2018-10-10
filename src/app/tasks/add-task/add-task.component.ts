@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { DataService } from "../../data.service";
 
 import { Router } from "../../utils";
+import { Config } from "../../config";
 
 @Component({
   selector: "app-add-task",
@@ -11,10 +12,13 @@ import { Router } from "../../utils";
 export class AddTaskComponent implements OnInit {
   action;
   duedate;
+  title: string;
 
   constructor(private service: DataService, private router: Router) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.title = Config.addTaskPageTitle;
+  }
 
   async save() {
     console.log("here");

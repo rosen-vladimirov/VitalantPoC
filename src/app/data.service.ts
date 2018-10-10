@@ -30,7 +30,7 @@ export class DataService {
     Kinvey.DataStoreType.Sync
   );
   private accountsStore = Kinvey.DataStore.collection(
-    Config.offlineAccountsCollectionName
+    Config.accountsCollectionName
   );
   public selectedFile: any;
   public isLoggedIn: BehaviorSubject<boolean>;

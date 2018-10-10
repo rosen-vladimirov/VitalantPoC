@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { DataService } from "../data.service";
 import { DrawerHelper } from "../utils/drawer-helper";
+import { Config } from "../config";
 
 @Component({
   selector: "app-ar",
@@ -8,13 +9,16 @@ import { DrawerHelper } from "../utils/drawer-helper";
   styleUrls: ["./ar.component.scss"]
 })
 export class ArComponent implements OnInit {
+  title: string;
   planeMaterial = {
     diffuse: "white",
     transparency: 0.2
   };
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.title = Config.arPageTitle;
+  }
   onDrawerButtonTap(): void {
     DrawerHelper.show();
   }

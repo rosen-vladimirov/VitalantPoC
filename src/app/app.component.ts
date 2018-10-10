@@ -10,11 +10,10 @@ import { Config } from "./config";
   styleUrls: ["./app.component.scss"]
 })
 export class AppComponent implements OnInit {
-  private _activatedUrl: string;
-  //private _sideDrawerTransition: DrawerTransitionBase;
   gesturesEnabled;
   user;
-  producsPageTitle: string;
+  homePageTitle: string;
+  productsPageTitle: string;
   tasksPageTitle: string;
   offlinePageTitle: string;
   mapPageTitle: string;
@@ -22,47 +21,46 @@ export class AppComponent implements OnInit {
   arPageTitle: string;
   chatPageTitle: string;
   accountsPageTitle: string;
+  homePageVisible: boolean;
+  accountsPageVisible: boolean;
+  productsPageVisible: boolean;
+  tasksPageVisible: boolean;
+  filesPageVisible: boolean;
+  offlinePageVisible: boolean;
+  mapPageVisible: boolean;
+  chatPageVisible: boolean;
+  arPageVisible: boolean;
 
-  constructor(private service: DataService, private router: Router) {
-    // Use the component constructor to inject services.
-  }
+  constructor(private service: DataService, private router: Router) {}
 
   ngOnInit(): void {
     this.user = this.service.username;
     this.gesturesEnabled = this.service.isLoggedIn;
-    this.producsPageTitle = Config.productsPageTitle;
+
+    this.homePageTitle = Config.homePageTitle;
+    this.productsPageTitle = Config.productsPageTitle;
     this.accountsPageTitle = Config.accountsPageTitle;
-    
     this.tasksPageTitle = Config.tasksPageTitle;
     this.filesPageTitle = Config.filesPageTitle;
     this.mapPageTitle = Config.mapPageTitle;
     this.offlinePageTitle = Config.offlinePageTitle;
-    this.mapPageTitle = Config.mapPageTitle;
     this.chatPageTitle = Config.chatPageTitle;
     this.arPageTitle = Config.arPageTitle;
 
-    // this._activatedUrl = "/";
-    // this._sideDrawerTransition = new SlideInOnTopTransition();
-    // this.router.events
-    //   .pipe(filter((event: any) => event instanceof NavigationEnd))
-    //   .subscribe(
-    //     (event: NavigationEnd) => (this._activatedUrl = event.urlAfterRedirects)
-    //   );
+    this.homePageVisible = Config.homePageVisible;
+    this.productsPageVisible = Config.productsPageVisible;
+    this.accountsPageVisible = Config.accountsPageVisible;
+    this.tasksPageVisible = Config.tasksPageVisible;
+    this.filesPageVisible = Config.filesPageVisible;
+    this.mapPageVisible = Config.mapPageVisible;
+    this.offlinePageVisible = Config.offlinePageVisible;
+    this.chatPageVisible = Config.chatPageVisible;
+    this.arPageVisible = Config.arPageVisible;
   }
 
   goToSettings() {
     this.router.navigate(["settings"]);
-    // const sideDrawer = <RadSideDrawer>app.getRootView();
-    //sideDrawer.closeDrawer();
     DrawerHelper.hide();
-  }
-
-  // get sideDrawerTransition(): DrawerTransitionBase {
-  //   return this._sideDrawerTransition;
-  // }
-
-  isComponentSelected(url: string): boolean {
-    return this._activatedUrl === url;
   }
 
   onNavItemTap(navItemRoute: string): void {

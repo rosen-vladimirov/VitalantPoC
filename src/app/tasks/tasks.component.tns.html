@@ -13,7 +13,7 @@
     </ActionItem>
     <ActionItem (tap)="addButtonTapped()" ios.systemIcon="4" ios.position="right" text="delete" android.position="popup"></ActionItem>
 
-    <Label class="action-bar-title" text="Tasks"></Label>
+    <Label class="action-bar-title" [text]="title"></Label>
 </ActionBar>
 
 <ListView class="list-group" [items]="items | async">

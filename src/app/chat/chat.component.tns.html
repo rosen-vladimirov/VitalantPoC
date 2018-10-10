@@ -11,6 +11,6 @@
     -->
     <ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()" ios.position="left">
     </ActionItem>
-    <Label class="action-bar-title" text="Chat"></Label>
+    <Label class="action-bar-title" [text]="title"></Label>
 </ActionBar>
 <NativeChat [config]="nativeChatConfig"></NativeChat>

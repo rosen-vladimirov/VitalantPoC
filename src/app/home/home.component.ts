@@ -8,12 +8,14 @@ import { Config } from "../config";
 })
 export class HomeComponent implements OnInit {
   logo: string;
+  title: string;
   constructor() {
     // Use the component constructor to inject providers.
   }
 
   ngOnInit(): void {
     this.logo = Config.logo;
+    this.title = Config.homePageTitle;
     // Init your component properties here.
   }
 
