@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { DataService } from "../data.service";
 import { Router } from "../utils";
 import { Config } from "../config";
+import { Page } from "ui/page";
 
 @Component({
   selector: "Login",
@@ -14,7 +15,12 @@ export class LoginComponent implements OnInit {
   processing: boolean;
   logo: string;
   title: string;
-  constructor(private dataService: DataService, private router: Router) {
+  constructor(
+    private dataService: DataService,
+    private router: Router,
+    private page: Page
+  ) {
+    this.page.actionBarHidden = true;
     // Use the component constructor to inject providers.
   }
 
