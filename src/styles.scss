@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~ionicons/dist/css/ionicons.css";
+@import "app-variables";
 
 @font-face {
   font-family: "Nunito-Regular";
@@ -22,9 +23,9 @@ body {
 }
 
 .my-form {
-  color: white;
+  color: $login-page-text-color;
   height: 100%;
-  background: linear-gradient(141deg, #4b4e56 0%, #656a75 51%, #494e58 75%);
+  background: $login-page-background;
 }
 .form-signin {
   height: 100%;
@@ -59,13 +60,13 @@ body {
   border-top-right-radius: 0;
 }
 .my-button {
-  background-color: #ff6358 !important;
+  background-color: $login-button-background-color !important;
   border-radius: 26px;
   color: white;
 }
 .mic {
   cursor: pointer;
-  color: white;
+  color: $login-page-text-color;
 }
 
 .title {
@@ -75,7 +76,7 @@ body {
 }
 
 .selected {
-  background-color: black;
+  background-color: darken($main-color, 10%);
   border-bottom: 2px solid #ff6358;
 }
 .menu-item {
@@ -90,4 +91,8 @@ body {
 .menu-logo {
   font-size: 1.5em;
   color: white;
+}
+
+.my-nav {
+  background-color: $main-color !important;
 }

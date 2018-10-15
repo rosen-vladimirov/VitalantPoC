@@ -28,6 +28,7 @@ export class LayoutComponent implements OnInit {
   mapPageVisible: boolean;
   chatPageVisible: boolean;
   arPageVisible: boolean;
+  logo: string;
   constructor(private service: DataService, private router: Router) {
     this.username = this.service.username;
   }
@@ -43,6 +44,7 @@ export class LayoutComponent implements OnInit {
     this.offlinePageTitle = Config.offlinePageTitle;
     this.chatPageTitle = Config.chatPageTitle;
     this.arPageTitle = Config.arPageTitle;
+    this.logo = Config.appLogo;
 
     this.homePageVisible = Config.homePageVisible;
     this.productsPageVisible = Config.productsPageVisible;

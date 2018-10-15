@@ -4,8 +4,8 @@ export class Config {
   static appSecret: any = "c1a32d5b3c474d0fa20a6f33fef396d5";
 
   //LOGIN
-  static appLogo: string = "~/app/images/logo-1.png";
-  static appTitle: string = "ACME SDE";
+  static appLogo: string = "images/logo-1.png";
+  static appTitle: string = "SDE Kinvey";
 
   //HOME
   static homePageTitle: string = "Home";
