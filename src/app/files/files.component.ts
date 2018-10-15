@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, NgZone } from "@angular/core";
 import { DataService } from "../data.service";
 import { DrawerHelper } from "../utils/drawer-helper";
 import { Router } from "../utils";
@@ -11,10 +11,18 @@ import { Config } from "../config";
 export class FilesComponent implements OnInit {
   items;
   title: string;
-  constructor(private service: DataService, private router: Router) {}
+  constructor(
+    private service: DataService,
+    private router: Router,
+    private zone: NgZone
+  ) {}
 
   ngOnInit() {
-    this.items = this.service.getFiles();
+    this.service.getFiles().then(files => {
+      this.zone.run(() => {
+        this.items = files;
+      });
+    });
     this.title = Config.filesPageTitle;
   }
   goToDetails(item) {

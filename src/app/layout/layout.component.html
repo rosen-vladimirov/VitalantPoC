@@ -9,48 +9,48 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item pr-4" routerLinkActive="selected" [routerLinkActiveOptions]="{exact:
+      <li *ngIf="homePageVisible" class="nav-item pr-4" routerLinkActive="selected" [routerLinkActiveOptions]="{exact:
                 true}">
         <a routerLink="/home" class="nav-link menu-item">
-          <i class="icon ion-md-home menu-logo mx-2"></i>Home
+          <i class="icon ion-md-home menu-logo mx-2"></i>{{homePageTitle}}
         </a>
       </li>
-      <li class="nav-item pr-4" routerLinkActive="selected" [routerLinkActiveOptions]="{exact:
+      <li *ngIf="accountsPageVisible" class="nav-item pr-4" routerLinkActive="selected" [routerLinkActiveOptions]="{exact:
         true}">
         <a routerLink="/accounts" class="nav-link menu-item">
-          <i class="icon ion-md-person menu-logo mx-2"></i>Accounts
+          <i class="icon ion-md-person menu-logo mx-2"></i>{{accountsPageTitle}}
         </a>
       </li>
-      <li class="nav-item pr-4" routerLinkActive="selected" [routerLinkActiveOptions]="{exact:
+      <li *ngIf="productsPageVisible" class="nav-item pr-4" routerLinkActive="selected" [routerLinkActiveOptions]="{exact:
                       true}">
         <a routerLink="/products" class="nav-link menu-item">
-          <i class="icon ion-md-list menu-logo mx-2"></i>Products
+          <i class="icon ion-md-list menu-logo mx-2"></i>{{productsPageTitle}}
         </a>
       </li>
-      <li class="nav-item pr-4" routerLinkActive="selected" [routerLinkActiveOptions]="{exact:
+      <li *ngIf="filesPageVisible" class="nav-item pr-4" routerLinkActive="selected" [routerLinkActiveOptions]="{exact:
         true}">
         <a routerLink="/files" class="nav-link menu-item">
-          <i class="icon ion-md-folder menu-logo mx-2"></i>Files
+          <i class="icon ion-md-folder menu-logo mx-2"></i>{{filesPageTitle}}
         </a>
       </li>
-      <li class="nav-item pr-4" routerLinkActive="selected" [routerLinkActiveOptions]="{exact:
+      <li *ngIf="tasksPageVisible" class="nav-item pr-4" routerLinkActive="selected" [routerLinkActiveOptions]="{exact:
   true}">
         <a routerLink="/tasks" class="nav-link menu-item">
           <i class="icon ion-md-checkbox-outline	
-          menu-logo mx-2"></i>Tasks
+          menu-logo mx-2"></i>{{tasksPageTitle}}
         </a>
       </li>
-      <li class="nav-item pr-4" routerLinkActive="selected" [routerLinkActiveOptions]="{exact:
+      <li *ngIf="offlinePageVisible" class="nav-item pr-4" routerLinkActive="selected" [routerLinkActiveOptions]="{exact:
                         true}">
         <a routerLink="/offline" class="nav-link menu-item">
           <i class="icon ion-md-wifi	
-          menu-logo mx-2"></i>Offline
+          menu-logo mx-2"></i>{{offlinePageTitle}}
         </a>
       </li>
-      <li class="nav-item pr-4" routerLinkActive="selected" [routerLinkActiveOptions]="{exact:
+      <li *ngIf="mapPageVisible" class="nav-item pr-4" routerLinkActive="selected" [routerLinkActiveOptions]="{exact:
                           true}">
         <a routerLink="/map" class="nav-link menu-item">
-          <i class="icon ion-md-map menu-logo mx-2"></i>Map
+          <i class="icon ion-md-map menu-logo mx-2"></i>{{mapPageTitle}}
         </a>
       </li>
     </ul>

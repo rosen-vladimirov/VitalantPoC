@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, NgZone } from "@angular/core";
 import { DataService } from "../data.service";
 import { DrawerHelper } from "../utils/drawer-helper";
 import { Config } from "../config";
@@ -10,12 +10,16 @@ import { Config } from "../config";
 export class OfflineComponent implements OnInit {
   items;
   title: any;
-  constructor(private service: DataService) {}
+  constructor(private service: DataService, private zone: NgZone) {}
 
   async ngOnInit() {
     this.title = Config.offlinePageTitle;
     await this.service.pullAccountData();
-    this.items = this.service.getSyncAccounts();
+    this.service.getSyncAccounts().subscribe(data => {
+      this.zone.run(() => {
+        this.items = data;
+      });
+    });
   }
   onDrawerButtonTap(): void {
     DrawerHelper.show();
@@ -32,14 +36,22 @@ export class OfflineComponent implements OnInit {
       myaccounts.push(thisaccount);
     }
     await this.service.addSyncAccounts(myaccounts);
-    this.items = this.service.getSyncAccounts();
-    alert("all done");
+    this.service.getSyncAccounts().subscribe(data => {
+      this.zone.run(() => {
+        this.items = data;
+        alert("all done");
+      });
+    });
   }
 
   async syncMe() {
     console.log("syncng");
     await this.service.pushSyncAccountData();
-    this.items = this.service.getSyncAccounts();
-    alert("all sync done");
+    this.service.getSyncAccounts().subscribe(data => {
+      this.zone.run(() => {
+        this.items = data;
+        alert("all sync done");
+      });
+    });
   }
 }

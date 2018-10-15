@@ -61,7 +61,7 @@ export class DataService {
     );
   }
 
-  getTasks(): any {
+  getTasks(): Observable<any[]> {
     return this.tasksStore.find();
   }
   async pullAccountData() {
@@ -73,10 +73,10 @@ export class DataService {
       return this.offlineAccountsStore.pull();
     } else Promise.resolve();
   }
-  getSyncAccounts(): any {
+  getSyncAccounts(): Observable<any[]> {
     return this.offlineAccountsStore.find();
   }
-  getAccounts(id?: string): any {
+  getAccounts(id?: string): Observable<any> {
     if (id) {
       return this.accountsStore.findById(id);
     } else {
@@ -100,7 +100,7 @@ export class DataService {
     return this.tasksStore.save(task);
   }
 
-  getFiles() {
+  getFiles(): Promise<any[]> {
     var q = new Kinvey.Query();
     q.equalTo("mimeType", "application/pdf");
     return Kinvey.Files.find(q);

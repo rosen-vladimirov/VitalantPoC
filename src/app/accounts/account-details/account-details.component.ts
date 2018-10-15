@@ -1,4 +1,9 @@
-import { Component, OnInit } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  ChangeDetectorRef,
+  AfterViewInit
+} from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { DataService } from "../../data.service";
 import { Router } from "../../utils/router";
@@ -11,26 +16,27 @@ import { Router } from "../../utils/router";
 export class AccountDetailsComponent implements OnInit {
   sub: any;
   id: any;
-  account: any;
+  account: any = { invoice: [] };
 
   constructor(
     private service: DataService,
     private route: ActivatedRoute,
-    private router: Router
-  ) {
-    this.account = { invoice: [] };
-  }
+    private router: Router,
+    private cd: ChangeDetectorRef
+  ) {}
   back() {
     (<any>this.router).back();
   }
 
   ngOnInit() {
+    console.log("init details");
     this.sub = this.route.params.subscribe(params => {
       this.id = params["id"]; // (+) converts string 'id' to a number
       console.log(this.id);
       this.service.getAccounts(this.id).subscribe(account => {
         console.log(account);
         this.account = account;
+        this.cd.detectChanges();
       });
 
       // In a real app: dispatch action to load the details here.

@@ -14,7 +14,7 @@
     <Label class="action-bar-title" [text]="title"></Label>
 </ActionBar>
 
-<ListView class="list-group" [items]="items | async">
+<ListView class="list-group" [items]="items">
     <ng-template let-item="item">
         <GridLayout class="list-group-item" rows="auto, *" columns="*" (tap)="goToDetails(item)">
             <Label row="0" [text]="item.accountname" class="list-group-item-heading"></Label>

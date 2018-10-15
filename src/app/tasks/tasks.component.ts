@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, NgZone } from "@angular/core";
 import { DataService } from "../data.service";
 import { DrawerHelper } from "../utils/drawer-helper";
 import { Router } from "../utils";
@@ -11,12 +11,20 @@ import { Config } from "../config";
 export class TasksComponent implements OnInit {
   items;
   title: string;
-  constructor(private service: DataService, private router: Router) {}
+  constructor(
+    private service: DataService,
+    private router: Router,
+    private zone: NgZone
+  ) {}
 
   ngOnInit() {
     console.log("ON INIT TASKS");
     this.title = Config.tasksPageTitle;
-    this.items = this.service.getTasks();
+    this.service.getTasks().subscribe(data => {
+      this.zone.run(() => {
+        this.items = data;
+      });
+    });
   }
   onDrawerButtonTap(): void {
     DrawerHelper.show();

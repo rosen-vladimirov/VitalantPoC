@@ -14,7 +14,7 @@
     <Label class="action-bar-title" [text]="title"></Label>
 </ActionBar>
 
-<ListView class="list-group" [items]="items | async">
+<ListView class="list-group" [items]="items">
     <ng-template let-item="item">
         <GridLayout class="list-group-item" rows="*" columns="auto, *" (tap)="goToDetails(item)">
             <Label text="&#xf1c1;" class="icon" row="0" col="0" style="text-align: center; vertical-align: center; color: #fff; font-size: 20; background-color: #f1582c;"></Label>
