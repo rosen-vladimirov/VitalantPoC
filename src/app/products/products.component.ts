@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone } from "@angular/core";
+import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
 import { DataService } from "../data.service";
 import { DrawerHelper } from "../utils/drawer-helper";
 import { Observable } from "rxjs";
@@ -12,13 +12,12 @@ import { Config } from "../config";
 export class ProductsComponent implements OnInit {
   items;
   title: string;
-  constructor(private service: DataService, private zone: NgZone) {}
+  constructor(private service: DataService, private cd: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.service.getItems().subscribe(data => {
-      this.zone.run(() => {
-        this.items = data;
-      });
+      this.items = data;
+      this.cd.detectChanges();
     });
     this.title = Config.productsPageTitle;
   }

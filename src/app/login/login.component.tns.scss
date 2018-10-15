@@ -8,7 +8,7 @@ $text-color: $login-page-text-color;
 }
 .logo {
   margin-top: 20;
-  height: 150;
+  height: 160;
   horizontal-align: center;
 }
 .h1 {
@@ -55,7 +55,7 @@ TextField {
 .login {
   horizontal-align: center;
   color: #ffffff;
-  background-color: #ff584e;
+  background-color: $login-button-background-color;
   font-size: 14;
   border-radius: 30;
   padding: 15 0;
