@@ -11,8 +11,9 @@
     -->
     <ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()" ios.position="left">
     </ActionItem>
-    <ActionItem ios.systemIcon="4" ios.position="right" (tap)="addMe()"></ActionItem>
-    <ActionItem ios.systemIcon="13" ios.position="right" (tap)="syncMe()"></ActionItem>
+    <ActionItem ios.systemIcon="4" ios.position="right" android.systemIcon="ic_menu_add" (tap)="addMe()"></ActionItem>
+    <ActionItem ios.systemIcon="13" ios.position="right" style="color:white;" android.systemIcon="ic_menu_refresh"
+        (tap)="syncMe()"></ActionItem>
 
     <Label class="action-bar-title" [text]="title"></Label>
 </ActionBar>

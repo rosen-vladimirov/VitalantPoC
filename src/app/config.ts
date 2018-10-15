@@ -12,6 +12,7 @@ export class Config {
   static logo: string =
     "https://devcenter.kinvey.com/images/Progress_Kinvey_Primary.png";
   static homePageVisible: boolean = true;
+  static homePageHeading: string = "We got your backend...";
 
   //ACCOUNTS
   static accountsPageTitle: string = "Accounts";

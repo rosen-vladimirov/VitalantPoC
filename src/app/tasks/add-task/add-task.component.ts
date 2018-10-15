@@ -30,4 +30,7 @@ export class AddTaskComponent implements OnInit {
     });
     this.router.navigate(["tasks"]);
   }
+  back() {
+    (<any>this.router).back();
+  }
 }

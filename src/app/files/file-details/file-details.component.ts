@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { DataService } from "../../data.service";
+import { Router } from "../../utils";
 
 @Component({
   selector: "app-file-details",
@@ -9,8 +10,11 @@ import { DataService } from "../../data.service";
 export class FileDetailsComponent implements OnInit {
   item;
 
-  constructor(private service: DataService) {
+  constructor(private service: DataService, private router: Router) {
     this.item = this.service.selectedFile;
+  }
+  back() {
+    (<any>this.router).back();
   }
 
   ngOnInit() {}

@@ -17,7 +17,11 @@ export class ChatComponent implements OnInit {
     this.nativeChatConfig = {
       botId: Config.botId,
       channelId: Config.channelId,
-      channelToken: Config.channelToken
+      channelToken: Config.channelToken,
+      session: {
+        clear: true,
+        userMessage: "Hello"
+      }
     };
   }
   onDrawerButtonTap(): void {

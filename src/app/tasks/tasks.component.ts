@@ -14,6 +14,7 @@ export class TasksComponent implements OnInit {
   constructor(private service: DataService, private router: Router) {}
 
   ngOnInit() {
+    console.log("ON INIT TASKS");
     this.title = Config.tasksPageTitle;
     this.items = this.service.getTasks();
   }

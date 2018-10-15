@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { DataService } from "../data.service";
 import { Router } from "../utils";
 import { ChatHelper } from "../utils/chat-helper";
+import { Page } from "ui/page";
+declare var nativechat: any;
 @Component({
   selector: "app-layout",
   templateUrl: "./layout.component.html",
@@ -9,8 +11,13 @@ import { ChatHelper } from "../utils/chat-helper";
 })
 export class LayoutComponent implements OnInit {
   username;
-  constructor(private service: DataService, private router: Router) {
+  constructor(
+    private service: DataService,
+    private router: Router,
+    private page: Page
+  ) {
     this.username = this.service.username;
+    this.page.actionBarHidden = true;
   }
 
   ngOnInit() {

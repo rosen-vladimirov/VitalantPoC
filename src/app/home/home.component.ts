@@ -9,6 +9,7 @@ import { Config } from "../config";
 export class HomeComponent implements OnInit {
   logo: string;
   title: string;
+  heading: string;
   constructor() {
     // Use the component constructor to inject providers.
   }
@@ -16,6 +17,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.logo = Config.logo;
     this.title = Config.homePageTitle;
+    this.heading = Config.homePageHeading;
     // Init your component properties here.
   }
 
