@@ -38,10 +38,7 @@ export class DataService {
   public username: Observable<string>;
 
   constructor() {
-    Kinvey.init({
-      appKey: Config.appKey,
-      appSecret: Config.appSecret
-    });
+    Kinvey.init();
     this.isLoggedIn = new BehaviorSubject<boolean>(
       Kinvey.User.getActiveUser() != null
     );
@@ -127,11 +124,11 @@ export class DataService {
     }
   }
 
-  loginWithMIC(redirectUri: string): Promise<Kinvey.User> {
+  loginWithMIC(): Promise<Kinvey.User> {
     if (Kinvey.User.getActiveUser()) {
       return Promise.resolve(Kinvey.User.getActiveUser());
     } else {
-      return Kinvey.User.loginWithMIC(redirectUri).then(user => {
+      return Kinvey.User.loginWithMIC().then(user => {
         console.log("we back");
         this.isLoggedIn.next(true);
         //console.log(user);
