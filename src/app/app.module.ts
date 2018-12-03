@@ -10,7 +10,6 @@ import { LoginComponent } from "./login/login.component";
 import { MapComponent } from "./map/map.component";
 import { OfflineComponent } from "./offline/offline.component";
 import { ProductsComponent } from "./products/products.component";
-import { SettingsComponent } from "./settings/settings.component";
 import { TasksComponent } from "./tasks/tasks.component";
 import { AddTaskComponent } from "./tasks/add-task/add-task.component";
 import { FileDetailsComponent } from "./files/file-details/file-details.component";
@@ -30,7 +29,6 @@ import { AccountDetailsComponent } from './accounts/account-details/account-deta
     MapComponent,
     OfflineComponent,
     ProductsComponent,
-    SettingsComponent,
     TasksComponent,
     AddTaskComponent,
     FileDetailsComponent,
@@ -43,4 +41,4 @@ import { AccountDetailsComponent } from './accounts/account-details/account-deta
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

@@ -3,6 +3,8 @@ import { DataService } from "../data.service";
 import { Router } from "../utils";
 import { Config } from "../config";
 import { Page } from "ui/page";
+import { RouterExtensions } from "nativescript-angular/router";
+
 
 @Component({
   selector: "Login",
@@ -17,7 +19,7 @@ export class LoginComponent implements OnInit {
   title: string;
   constructor(
     private dataService: DataService,
-    private router: Router,
+    private router: RouterExtensions,
     private page: Page
   ) {
     this.page.actionBarHidden = true;
@@ -34,7 +36,8 @@ export class LoginComponent implements OnInit {
     try {
       this.processing = true;
       await this.dataService.login(this.username, this.password);
-      this.router.navigate([""], <any>{ clearHistory: true });
+      console.log("LOG IN SUCsCESSFUL");
+      this.router.navigate(["home"], { clearHistory: true });
     } catch {
       alert("Invalid credentials");
     } finally {

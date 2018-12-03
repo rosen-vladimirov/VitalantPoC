@@ -8,35 +8,6 @@ import { Config } from "./config";
   providedIn: "root"
 })
 export class DataService {
-  deleteItem(): any {
-    return this.tasksStore.remove();
-  }
-  getFilesCount(): any {
-    return Kinvey.Files.count();
-  }
-  getPendingCount(): Promise<{ count: number }> {
-    return this.accountsStore.pendingSyncCount();
-  }
-  getCount(): Observable<any> {
-    return this.accountsStore.count();
-  }
-
-  private myDataStore = Kinvey.DataStore.collection(
-    Config.productsCollectionName
-  );
-  private tasksStore = Kinvey.DataStore.collection(Config.taskCollectionName);
-  private offlineAccountsStore = Kinvey.DataStore.collection(
-    Config.offlineAccountsCollectionName,
-    Kinvey.DataStoreType.Sync
-  );
-  private accountsStore = Kinvey.DataStore.collection(
-    Config.accountsCollectionName
-  );
-  public selectedFile: any;
-  public isLoggedIn: BehaviorSubject<boolean>;
-  private user: BehaviorSubject<Kinvey.User>;
-  public username: Observable<string>;
-
   constructor() {
     Kinvey.init({
       appKey: Config.appKey,
@@ -60,6 +31,35 @@ export class DataService {
       })
     );
   }
+
+  deleteItem(): any {
+    return this.tasksStore.remove();
+  }
+  getFilesCount(): any {
+    return Kinvey.Files.count();
+  }
+  getPendingCount(): any {
+    return this.accountsStore.pendingSyncCount();
+  }
+  getCount(): Observable<any> {
+    return this.accountsStore.count();
+  }
+
+  private myDataStore = Kinvey.DataStore.collection(
+    Config.productsCollectionName
+  );
+  private tasksStore = Kinvey.DataStore.collection(Config.taskCollectionName);
+  private offlineAccountsStore = Kinvey.DataStore.collection(
+    Config.offlineAccountsCollectionName,
+    Kinvey.DataStoreType.Sync
+  );
+  private accountsStore = Kinvey.DataStore.collection(
+    Config.accountsCollectionName
+  );
+  public selectedFile: any;
+  public isLoggedIn: BehaviorSubject<boolean>;
+  private user: BehaviorSubject<Kinvey.User>;
+  public username: Observable<string>;
 
   getTasks(): Observable<any[]> {
     return this.tasksStore.find();
@@ -111,14 +111,14 @@ export class DataService {
   }
 
   login(name, password): Promise<Kinvey.User> {
-    console.log("loggin in");
+    console.log("login in");
     if (Kinvey.User.getActiveUser()) {
-      console.log("already logged in");
+      console.log("already logzgesd in");
       return Promise.resolve(Kinvey.User.getActiveUser());
     } else {
-      console.log("not yet");
+      console.log("nsot yet");
       return Kinvey.User.login(name, password).then(user => {
-        console.log("we back");
+        console.log("we bsack");
         this.isLoggedIn.next(true);
         //console.log(user);
         this.user.next(user);
@@ -132,7 +132,7 @@ export class DataService {
       return Promise.resolve(Kinvey.User.getActiveUser());
     } else {
       return Kinvey.User.loginWithMIC(redirectUri).then(user => {
-        console.log("we back");
+        console.log("we bassck");
         this.isLoggedIn.next(true);
         //console.log(user);
         this.user.next(user);
