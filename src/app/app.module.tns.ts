@@ -28,9 +28,10 @@ import { NativeScriptFormsModule } from "nativescript-angular/forms";
 // import { NativeScriptHttpClientModule } from 'nativescript-angular/http-client';
 import { NativeChatModule } from "@progress-nativechat/nativescript-nativechat/angular";
 
-import * as platform from "platform";
+import { isAndroid, isIOS, device, screen } from "tns-core-modules/platform";
+
 declare var GMSServices: any;
-if (platform.isIOS) {
+if (isIOS) {
   GMSServices.provideAPIKey("AIzaSyCSln6LZF0vbnI23oGPpoQsYLbETImR3QQ");
 }
 
@@ -64,4 +65,4 @@ if (platform.isIOS) {
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA]
 })
-export class AppModule {}
+export class AppModule { }
