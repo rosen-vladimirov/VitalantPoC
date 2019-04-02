@@ -3,6 +3,7 @@ import { Kinvey } from "./utils";
 import { BehaviorSubject, Observable } from "rxjs";
 import { map } from "rxjs/operators";
 import { Config } from "./config";
+import * as dialogs from "tns-core-modules/ui/dialogs";
 
 @Injectable({
   providedIn: "root"
@@ -48,7 +49,9 @@ export class DataService {
   private myDataStore = Kinvey.DataStore.collection(
     Config.productsCollectionName
   );
-  private tasksStore = Kinvey.DataStore.collection(Config.taskCollectionName);
+  private tasksStore = Kinvey.DataStore.collection(Config.taskCollectionName, 
+    Kinvey.DataStoreType.Network);
+
   private offlineAccountsStore = Kinvey.DataStore.collection(
     Config.offlineAccountsCollectionName,
     Kinvey.DataStoreType.Sync
@@ -56,13 +59,49 @@ export class DataService {
   private accountsStore = Kinvey.DataStore.collection(
     Config.accountsCollectionName
   );
+
+  private expensesStore = Kinvey.DataStore.collection(
+    "expenses",
+    Kinvey.DataStoreType.Sync
+  );
+
   public selectedFile: any;
   public isLoggedIn: BehaviorSubject<boolean>;
   private user: BehaviorSubject<Kinvey.User>;
   public username: Observable<string>;
 
   getTasks() {
+    this.tasksStore.subscribe({
+      onMessage: (m) => {
+        console.log("LiveService Message: " + JSON.stringify(m));
+        dialogs.alert(
+          {
+            title: "New Task Added!",
+            message: m.action,
+            okButtonText: "Im on It!"
+          }
+        ).then(()=> {
+          console.log("Dialog closed!");
+      });
+      },
+      onStatus: (s) => {
+        console.log("Status: " + s);
+      },
+      onError: (e)  => {
+        console.log("Error: " + e);
+      }
+    })
+    .then(() => {
+      console.log("Subscribed to tasks");
+    })
+    .catch(e => {
+      console.log("Error: " + e);
+    })
     return this.tasksStore.find();
+  }
+
+  getTaskDetail(id: string) {
+    return this.tasksStore.findById(id);
   }
   async pullAccountData() {
     let num = await this.offlineAccountsStore.pendingSyncCount();
@@ -83,13 +122,29 @@ export class DataService {
       return this.accountsStore.find();
     }
   }
+
+  getSkiAccounts(): any {
+    const query = new Kinvey.Query();
+    query.equalTo("AccountNumber", "4561987");
+    return this.accountsStore.find(query);
+  }
+
   addSyncAccounts(accounts): any {
     return Promise.all(
       accounts.map(item => this.offlineAccountsStore.save(item))
     );
   }
+
+  addSyncExpenses(expenses): any {
+    return Promise.all(
+      expenses.map(item => this.expensesStore.save(item))
+    );
+  }
   pushSyncAccountData(): any {
     return this.offlineAccountsStore.sync();
+  }
+  pushSyncExpenseData(): any {
+    return this.expensesStore.sync();
   }
   toggleTaskStatus(task): any {
     task.completed = !task.completed;
@@ -100,14 +155,28 @@ export class DataService {
     return this.tasksStore.save(task);
   }
 
+  completeTask(task): any {
+    console.log("Inside completeTask Service");
+    return this.tasksStore.save(task);
+  }
+
   getFiles(): Promise<any[]> {
+    console.log("Inside getFiles");
     var q = new Kinvey.Query();
-    q.equalTo("mimeType", "application/pdf");
-    return Kinvey.Files.find(q);
+    q.equalTo("product", "Blizzard Brahma");
+    return Kinvey.Files.find();
   }
 
   getItems() {
     return this.myDataStore.find();
+  }
+
+  getSyncExpenses() {
+    return this.expensesStore.find();
+  }
+
+  pullExpenses() {
+    return this.expensesStore.pull();
   }
 
   login(name, password): Promise<Kinvey.User> {

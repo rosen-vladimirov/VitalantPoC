@@ -8,6 +8,8 @@ import { ActivatedRoute } from "@angular/router";
 import { DataService } from "../../data.service";
 import { Router } from "../../utils/router";
 
+import { SelectedIndexChangedEventData, TabView } from "tns-core-modules/ui/tab-view";
+
 @Component({
   selector: "app-account-details",
   templateUrl: "./account-details.component.html",
@@ -34,6 +36,7 @@ export class AccountDetailsComponent implements OnInit {
       this.id = params["id"]; // (+) converts string 'id' to a number
       console.log(this.id);
       this.service.getAccounts(this.id).subscribe(account => {
+        //account.SubTotal = account.ItemPrice*account.ItemQuantity;
         console.log(account);
         this.account = account;
         this.cd.detectChanges();
@@ -41,5 +44,10 @@ export class AccountDetailsComponent implements OnInit {
 
       // In a real app: dispatch action to load the details here.
     });
+  }
+
+  onIndexChanged(args: SelectedIndexChangedEventData) {
+    const tabView = <TabView>args.object;
+    const selectedTabViewItem = tabView.items[args.newIndex];
   }
 }

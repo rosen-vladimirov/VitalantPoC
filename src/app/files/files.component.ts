@@ -20,6 +20,7 @@ export class FilesComponent implements OnInit {
   ngOnInit() {
     this.service.getFiles().then(files => {
       this.zone.run(() => {
+        console.log("Files: " + JSON.stringify(files));
         this.items = files;
       });
     });

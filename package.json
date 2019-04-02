@@ -4,6 +4,9 @@
     "id": "org.nativescript.angularsde",
     "tns-ios": {
       "version": "5.0.0"
+    },
+    "tns-android": {
+      "version": "5.2.1"
     }
   },
   "version": "0.0.0",
@@ -36,9 +39,10 @@
     "kinvey-nativescript-sdk": "^3.12.3",
     "nativescript-angular": "^7.1.0",
     "nativescript-ar": "^0.6.0",
-    "nativescript-google-maps-sdk": "^2.6.1",
     "nativescript-pdf-view": "^2.0.1",
+    "nativescript-push-notifications": "^1.1.6",
     "nativescript-theme-core": "~1.0.4",
+    "nativescript-ui-listview": "^6.0.0",
     "nativescript-ui-sidedrawer": "^5.0.0",
     "reflect-metadata": "~0.1.8",
     "rxjs": "^6.2.0",

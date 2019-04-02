@@ -1,0 +1,35 @@
+<ActionBar class="action-bar">
+    <NavigationButton text="Back" android.systemIcon="ic_menu_back" (tap)="back()"></NavigationButton>
+    
+    <Label class="action-bar-title" [text]="task.action"></Label>
+</ActionBar>
+
+<GridLayout class="p-t-20" rows="auto,auto,auto">
+    <GridLayout row="0" rows="auto,auto,auto,auto,auto" columns="auto,*">
+        <Label row="0" col="0" class="p-r-10 p-l-10" text="Task:"></Label>
+        <Label row="0" col="1" [text]="task.action"></Label>
+        <Label row="1" col="0" class="p-r-10 p-l-10" text="Due Date:"></Label>
+        <Label row="1" col="1" [text]="task.duedate"></Label>
+        <Label row="2" col="0" class="p-r-10 p-l-10" text="Description:" 
+            style="vertical-align: top;">
+        </Label>
+        <Label row="2" col="1" [text]="task.description" textWrap="true"></Label>
+        <Label row="3" col="0" class="p-r-10 p-l-10" text="Completed:"></Label>
+        <Switch [checked]="task.completed" (checkedChange)="onChecked($event)" 
+            row="3" col="1">
+        </Switch>
+        <Label row="4" col="0" class="p-r-10 p-l-10" text="Notes:"></Label>
+        <TextField row="4" col="1" hint="Enter Notes..." class="input input-border" 
+            [(ngModel)]="notes">
+        </TextField>
+    </GridLayout>
+    <StackLayout row="1">
+        <Button class="btn btn-primary btn-active" text="Completed Task" (tap)="completeTask()">
+        </Button> 
+    </StackLayout>
+    <StackLayout row="2">
+        <Button class="btn btn-primary" style="background-color: red;" (tap)="initiateChat()"
+            text="Ask an Expert">
+        </Button>
+    </StackLayout>
+</GridLayout>

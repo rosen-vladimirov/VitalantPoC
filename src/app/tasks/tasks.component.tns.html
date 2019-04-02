@@ -18,7 +18,7 @@
 
 <ListView class="list-group" [items]="items">
     <ng-template let-item="item">
-        <GridLayout class="list-group-item" rows="auto, *" columns="40, *">
+        <GridLayout class="list-group-item" rows="auto, *" columns="40, *" (tap)="goToDetails(item)">
             <Label (tap)="markDone(item)" row="0" col="0" class="fa" [text]="item.completed ? '&#xf00c;':'&#xf1ce;'"
                 rowSpan="2"></Label>
             <Label row="0" col="1" [text]="item.action" class="list-group-item-heading"></Label>

@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
+import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -19,6 +20,7 @@ import { ArComponent } from "./ar/ar.component";
 import { AccountsComponent } from './accounts/accounts.component';
 import { AccountDetailsComponent } from './accounts/account-details/account-details.component';
 import { SettingsComponent } from "./settings/settings.component";
+import { TaskDetailsComponent } from "./tasks/task-details/task-details.component";
 
 @NgModule({
   declarations: [
@@ -31,6 +33,7 @@ import { SettingsComponent } from "./settings/settings.component";
     OfflineComponent,
     ProductsComponent,
     TasksComponent,
+    TaskDetailsComponent,
     AddTaskComponent,
     FileDetailsComponent,
     LayoutComponent,
@@ -39,7 +42,7 @@ import { SettingsComponent } from "./settings/settings.component";
     AccountDetailsComponent,
     SettingsComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, NativeScriptUIListViewModule],
   providers: [],
   bootstrap: [AppComponent]
 })

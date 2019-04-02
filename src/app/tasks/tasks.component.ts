@@ -3,6 +3,13 @@ import { DataService } from "../data.service";
 import { DrawerHelper } from "../utils/drawer-helper";
 import { Router } from "../utils";
 import { Config } from "../config";
+
+import { Push } from 'kinvey-nativescript-sdk/push';
+
+Push.onNotification((data: any) => {
+  alert(data.body);
+});
+
 @Component({
   selector: "app-tasks",
   templateUrl: "./tasks.component.html",
@@ -34,5 +41,10 @@ export class TasksComponent implements OnInit {
   }
   async markDone(item) {
     await this.service.toggleTaskStatus(item);
+  }
+
+  goToDetails(item) {
+    //console.log(item);
+    this.router.navigate(["task-details", item._id]);
   }
 }

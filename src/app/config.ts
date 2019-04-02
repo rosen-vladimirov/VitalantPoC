@@ -1,18 +1,18 @@
 export class Config {
   //KINVEY
-  static appKey: string = "kid_ZJk02vOUFg";
-  static appSecret: string = "c1a32d5b3c474d0fa20a6f33fef396d5";
+  static appKey: string = "kid_SJAGGgcBm";
+  static appSecret: string = "27d5de1f432f49dfa8cd8da1c37f11ec";
 
   //LOGIN
   static appLogo: string = "images/logo-1.png";
-  static appTitle: string = "SDE Kinvey";
+  static appTitle: string = "ACME Field Service";
 
   //HOME
   static homePageTitle: string = "Home";
   static logo: string =
-    "https://devcenter.kinvey.com/images/Progress_Kinvey_Primary.png";
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Acme_Markets_lolo.svg/1200px-Acme_Markets_lolo.svg.png";
   static homePageVisible: boolean = true;
-  static homePageHeading: string = "We got your backend...";
+  static homePageHeading: string = "For all your needs in the field..";
 
   //ACCOUNTS
   static accountsPageTitle: string = "Accounts";
@@ -22,7 +22,7 @@ export class Config {
   //PRODUCTS
   static productsPageTitle: string = "Products";
   static productsCollectionName = "products";
-  static productsPageVisible: boolean = true;
+  static productsPageVisible: boolean = false;
   //FILES
   static filesPageTitle: string = "Files";
   static filesPageVisible: boolean = true;
@@ -42,13 +42,13 @@ export class Config {
 
   //MAP
   static mapPageTitle: string = "Map";
-  static mapPageVisible: boolean = true;
+  static mapPageVisible: boolean = false;
 
   //CHAT
   static chatPageTitle: string = "Chat";
-  static botId: string = "5aec90c92f0cb34333a804a7";
-  static channelId: string = "7a530423-7e17-4b37-8c46-03a910241065";
-  static channelToken: string = "0597259e-ad2c-4563-a92d-1c4d9a6cd33c";
+  static botId: string = "5c74a4817e240411bf114338";
+  static channelId: string = "4941a3f5-ac65-4986-87d9-ad4316fbbb03";
+  static channelToken: string = "68a79180-ddb5-421d-b8ba-ae161be01026";
   static chatPageVisible: boolean = true;
 
   //AR

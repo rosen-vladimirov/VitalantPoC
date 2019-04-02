@@ -21,7 +21,7 @@ export class AccountsComponent implements OnInit {
   async ngOnInit() {
     this.title = Config.accountsPageTitle;
     await this.service.pullAccountData();
-    this.service.getAccounts().subscribe(data => {
+    this.service.getSkiAccounts().subscribe(data => {
       this.zone.run(() => {
         this.items = data;
       });
@@ -29,6 +29,14 @@ export class AccountsComponent implements OnInit {
   }
   onDrawerButtonTap(): void {
     DrawerHelper.show();
+  }
+
+  refreshMe(): void {
+    this.service.getSkiAccounts().subscribe(data => {
+      this.zone.run(() => {
+        this.items = data;
+      });
+    });
   }
 
   goToDetails(item) {

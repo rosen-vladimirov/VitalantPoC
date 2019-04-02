@@ -29,11 +29,8 @@ import { NativeScriptFormsModule } from "nativescript-angular/forms";
 import { NativeChatModule } from "@progress-nativechat/nativescript-nativechat/angular";
 
 import { isAndroid, isIOS, device, screen } from "tns-core-modules/platform";
-
-declare var GMSServices: any;
-if (isIOS) {
-  GMSServices.provideAPIKey("AIzaSyCSln6LZF0vbnI23oGPpoQsYLbETImR3QQ");
-}
+import { TaskDetailsComponent } from "./tasks/task-details/task-details.component";
+import { ExpensesComponent } from "./expenses/expenses.component";
 
 @NgModule({
   declarations: [
@@ -50,9 +47,11 @@ if (isIOS) {
     ProductsComponent,
     SettingsComponent,
     TasksComponent,
+    TaskDetailsComponent,
     AddTaskComponent,
     FileDetailsComponent,
-    LayoutComponent
+    LayoutComponent,
+    ExpensesComponent
   ],
   imports: [
     NativeScriptModule,

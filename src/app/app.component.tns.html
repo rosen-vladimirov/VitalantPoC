@@ -32,14 +32,6 @@ http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawe
           <Label col="0" text="&#xf0ae;" class="fa"></Label>
           <Label col="1" [text]="tasksPageTitle" class="p-r-10"></Label>
         </GridLayout>
-        <GridLayout columns="auto, *" class="sidedrawer-list-item" (tap)="onNavItemTap('/offline')" *ngIf="offlinePageVisible">
-          <Label col="0" text="&#xf1e6;" class="fa"></Label>
-          <Label col="1" [text]="offlinePageTitle" class="p-r-10"></Label>
-        </GridLayout>
-        <GridLayout columns="auto, *" class="sidedrawer-list-item" (tap)="onNavItemTap('/map')" *ngIf="offlinePageVisible">
-          <Label col="0" text="&#xf279;" class="fa"></Label>
-          <Label col="1" [text]="mapPageTitle" class="p-r-10"></Label>
-        </GridLayout>
         <GridLayout columns="auto, *" class="sidedrawer-list-item" (tap)="onNavItemTap('/chat')" *ngIf="chatPageVisible">
           <Label col="0" text="&#xf086;" class="fa"></Label>
           <Label col="1" [text]="chatPageTitle" class="p-r-10"></Label>
@@ -47,6 +39,10 @@ http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawe
         <GridLayout columns="auto, *" class="sidedrawer-list-item" (tap)="onNavItemTap('/ar')" *ngIf="arPageVisible">
           <Label col="0" text="&#xf042;" class="fa"></Label>
           <Label col="1" [text]="arPageTitle" class="p-r-10"></Label>
+        </GridLayout>
+        <GridLayout columns="auto, *" class="sidedrawer-list-item" (tap)="onNavItemTap('/expenses')">
+          <Label col="0" text="&#xf042;" class="fa"></Label>
+          <Label col="1" text="Expenses" class="p-r-10"></Label>
         </GridLayout>
       </StackLayout>
     </ScrollView>

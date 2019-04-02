@@ -1,14 +1,142 @@
 <ActionBar class="action-bar">
     <NavigationButton text="Back" android.systemIcon="ic_menu_back" (tap)="back()"></NavigationButton>
 
-    <Label class="action-bar-title" [text]="account.accountname"></Label>
+    <Label class="action-bar-title" [text]="account.Name"></Label>
 </ActionBar>
 
-<ListView class="list-group" [items]="account.invoice">
-    <ng-template let-item="item">
-        <GridLayout class="list-group-item" rows="auto, *" columns="*">
-            <Label row="0" [text]="item.Amount" class="list-group-item-heading"></Label>
-            <Label row="1" [text]="item.InvoiceNumber" class="list-group-item-text"></Label>
+<GridLayout rows="*" class="page page-content">
+        <GridLayout row="0">
+                <TabView selectedIndex="0" (selectedIndexChange)="onIndexChanged($event)">
+                        <StackLayout *tabItem="{title: 'Account Details'}" row="1">
+                            <GridLayout rows="auto,*">
+                                <GridLayout row="0">
+                                        <Image [src]="account.ImageUrl" 
+                                            stretch="aspectFill" height="200" class="m-b-15"></Image>
+                                </GridLayout>
+                                <StackLayout row="1">
+                                    <GridLayout rows="auto" columns="*">
+                                        <Label row="0" col="0" class="p-l-15 p-b-10 m-r-20" [text]="account.Description" textWrap="true">
+                                        </Label>
+                                    </GridLayout>
+                                    <GridLayout rows="auto,auto,auto" columns="auto, auto">
+                                        <Label *ngIf="account.OffersSkis" text="Skis available for rental" class="p-l-15 m-r-20 p-b-10 font-weight-bold" row="0"></Label>
+                                        <Label *ngIf="account.OffersSnowboards" text="Snowboards available for rental" class="p-l-15 m-r-20 p-b-10 font-weight-bold" row="1"></Label>
+                                        <Label *ngIf="account.OffersMtnBikes" text="Mountain Bikes available for rental" class="p-l-15 m-r-20 p-b-10 font-weight-bold" row="2"></Label>
+                                    </GridLayout>
+                                    <GridLayout class="m-t-20" rows="auto,auto,auto" columns="*, *">
+                                        <Label row="0" text="Primary Contact" class="p-l-15 p-b-10 text-secondary"></Label>
+                                        <Label row="0" col="1" class="text p-b-10">
+                                            <FormattedString>
+                                                <Span [text]="account.PrimaryContact"></Span>
+                                            </FormattedString>
+                                        </Label>
+                                        <Label text="Phone" class="p-l-15 p-b-10 m-0 text-secondary" row="1"></Label>
+                                        <Label [text]="account.Phone" row="1" col="1" class="text m-0 p-0" textWrap="true"></Label>                        
+                                        <Label text="Priority" class="p-l-15 m-r-20 p-b-10 text-secondary" row="2"></Label>
+                                        <Label [text]="account.SLA" row="2" col="1" class="text"></Label>
+                                    </GridLayout>
+                                </StackLayout>
+                            </GridLayout>
+                        </StackLayout>
+                        <StackLayout *tabItem="{title: 'Order Details'}">
+                            <GridLayout rows="*,*">
+                                <ListView row="0" [items]="account.orders" class="list-group" style="height: 50%;">
+                                    <ng-template let-item="item" let-i="index" 
+                                        let-odd="odd" let-even="even">
+                                        <GridLayout rows="*, *, *, *" columns="*, *, *" class="list-group-item m-b-20" style="border: none;">
+                                            <Label row="0" [text]="item.ProductName" colSpan="2" class="text-primary font-weight-bold"></Label>
+                                            <Label row="0" col="3" horizontalAlignment="right" class="list-group-item-text m-r-5">
+                                                <FormattedString>
+                                                    <Span [text]="item._id"></Span>
+                                                </FormattedString>
+                                            </Label>
+        
+                                            <StackLayout row="1" class="hr-light m-t-5 m-b-5" colSpan="5"></StackLayout>
+                                                <GridLayout row="2" col="0" rows="*", columns="auto, auto" horizontalAlignment="left">
+                                                    <Label class="text-secondary h4 p-r-5" text="Item Price:" col="0"></Label>
+                                                    <Label class="font-weight-bold h4" col="1">
+                                                        <FormattedString>
+                                                            <Span text="&#36;"></Span>
+                                                            <Span [text]="item.PricePerItem"></Span>
+                                                        </FormattedString>
+                                                    </Label>
+                                                </GridLayout>
+                                                <GridLayout row="2" col="1" rows="*", columns="auto, auto" horizontalAlignment="center">
+                                                    <Label class="text-secondary h4 p-r-5" text="Quantity:" col="0"></Label>
+                                                    <Label class="font-weight-bold h4" [text]="item.Quantity" col="1"></Label>
+                                                </GridLayout>
+                                                 <GridLayout row="2" col="2" rows="*", columns="auto, auto" horizontalAlignment="right">
+                                                    <Label class="text-secondary h4 p-r-5" text="Sub Total:" col="0"></Label>
+                                                    <Label class="font-weight-bold h4" col="1">
+                                                        <FormattedString>
+                                                            <Span text="&#36;"></Span>
+                                                            <Span [text]="item.Subtotal"></Span>
+                                                        </FormattedString>
+                                                    </Label>
+                                                </GridLayout>
+                                                <GridLayout row="3" col="0" horizontalAlignment="left" columns="auto, auto">
+                                                    <Label class="text-secondary h4 p-r-5" text="Order Date:" col="0"></Label>
+                                                    <Label class="font-weight-bold h4" [text]="item.OrderDate" col="1"></Label>
+                                                </GridLayout>
+                                                <GridLayout row="3" col="2" horizontalAlignment="right" columns="auto, auto">
+                                                    <Label class="text-secondary h4 p-r-5" text="Delivery Date:" col="0"></Label>
+                                                    <Label class="font-weight-bold h4 p-r-5" [text]="item.DeliveryDate" col="1"></Label>
+                                                </GridLayout>
+                                        </GridLayout>
+                                    </ng-template>
+                                </ListView>
+                                <StackLayout row="1">
+                                    <GridLayout class="p-l-15" verticalAlignment="top" columns="*,*">
+                                            <Label text="Sub-Total" class="h3" col="0"></Label>
+                                            <Label col="1">
+                                                <FormattedString>
+                                                    <Span text="&#36;"></Span>
+                                                    <Span [text]="account.SubTotal"></Span>
+                                                </FormattedString>
+                                            </Label>
+                                        </GridLayout>
+                                </StackLayout>
+                            </GridLayout>
+                        </StackLayout>
+                </TabView>
         </GridLayout>
-    </ng-template>
-</ListView>
+    </GridLayout>
+
+<!--
+<GridLayout class="page page-content" rows="*,*">
+        <ListView row="0" class="list-group" [items]="account.orders">
+            <ng-template let-item="item">
+                <StackLayout>
+                    <GridLayout class="list-group-item" rows="*, *" columns="*,*">
+                        <Label row="0" col="0" [text]="item.ItemName" 
+                            class="list-group-item-heading">
+                        </Label>
+                        <Label row="0" col="1" class="list-group-item-text">
+                            <FormattedString>
+                                <Span text="&#36;"></Span>
+                                <Span [text]="item.ItemPrice"></Span>
+                            </FormattedString>
+                        </Label>
+                        <Label row="1" col="0" [text]="item.OrderDate"
+                            class="list-group-item-text">
+                        </Label>
+                        <Label row="1" col="1" [text]="item.ItemQuantity"
+                            class="list-group-item-text">
+                        </Label>
+                    </GridLayout>
+                </StackLayout>
+            </ng-template>
+        </ListView>
+    <StackLayout row="1">
+        <GridLayout class="p-l-15" verticalAlignment="top" columns="*,*">
+            <Label text="Sub-Total" class="h3" col="0"></Label>
+            <Label col="1">
+                <FormattedString>
+                    <Span text="&#36;"></Span>
+                    <Span [text]="account.SubTotal"></Span>
+                </FormattedString>
+            </Label>
+        </GridLayout>
+    </StackLayout>
+</GridLayout>
+-->

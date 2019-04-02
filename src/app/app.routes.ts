@@ -16,6 +16,8 @@ import { FileDetailsComponent } from "./files/file-details/file-details.componen
 import { LayoutComponent } from "./layout/layout.component";
 import { AccountsComponent } from "./accounts/accounts.component";
 import { AccountDetailsComponent } from "./accounts/account-details/account-details.component";
+import { TaskDetailsComponent } from "./tasks/task-details/task-details.component";
+import { ExpensesComponent } from "./expenses/expenses.component";
 
 export const routes: Routes = [
   {
@@ -33,10 +35,12 @@ export const routes: Routes = [
       { path: "settings", component: SettingsComponent },
       { path: "tasks", component: TasksComponent },
       { path: "tasks/add-task", component: AddTaskComponent },
+      { path: "task-details/:id", component: TaskDetailsComponent},
       { path: "offline", component: OfflineComponent },
       { path: "map", component: MapComponent },
       { path: "chat", component: ChatComponent },
-      { path: "ar", component: ArComponent }
+      { path: "ar", component: ArComponent },
+      { path: "expenses", component: ExpensesComponent }
     ]
   },
   { path: "login", component: LoginComponent, canActivate: [AnonGuard] }
