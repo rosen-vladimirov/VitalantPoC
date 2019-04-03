@@ -64,6 +64,7 @@ export class AppComponent implements OnInit {
   }
 
   onNavItemTap(navItemRoute: string): void {
+    console.log("Inside onNavItemTap " + navItemRoute);
     this.router.navigate([navItemRoute]);
     DrawerHelper.hide();
   }

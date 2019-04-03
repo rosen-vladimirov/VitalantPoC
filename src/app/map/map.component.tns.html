@@ -9,11 +9,26 @@
     NavigationButton as a side-drawer button in iOS is not possible,
     because its function is to always navigate back in the application.
     -->
-    <ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()" ios.position="left">
+    <ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()"
+        ios.position="left">
     </ActionItem>
-    <Label class="action-bar-title" [text]="title"></Label>
+    <Label class="action-bar-title" text="Find Centers"></Label>
 </ActionBar>
 
-<GridLayout>
-    <MapView></MapView>
+<GridLayout class="page" rows="auto,*">
+    <SearchBar row="0" hint="Enter location" [text]="searchPhrase" 
+        (submit)="onSubmit($event)" 
+        color="red" textFieldBackgroundColor="white" textFieldHintColor="red">
+    </SearchBar>
+    
+    <GridLayout row="1">
+            <GridLayout xmlns="http://www.nativescript.org/tns.xsd" xmlns:maps="nativescript-google-maps-sdk" height="100%"
+                    verticalAlignment="top" row="0">
+            <maps:mapView
+                latitude="{{latitude}}" 
+                longitude="{{longitude}}"
+                (mapReady)="onMapReady($event)" 
+                zoom="12" />
+            </GridLayout>
+    </GridLayout>
 </GridLayout>

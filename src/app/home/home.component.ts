@@ -35,33 +35,7 @@ export class HomeComponent implements OnInit {
       })
       .catch(err => {
         console.log("Error: " + err);
-      });
-    
-      const promise = Push.register({
-        android: {
-          senderID: '982992243930'
-        },
-        notificationCallback: (message: any) => {
-          console.log("Message: " + JSON.stringify(message));
-          if (message.Status === "Approved") {
-            alert(message.body);
-            this.zone.run(() => {
-              this.router.navigate(["expenses"]);
-            })
-          }
-          if (message.Asset === "Instruction Manual") {
-            this.zone.run(() => {
-              this.router.navigate(["files"]);
-            })
-          }
-        }
-      })
-      .then((deviceToken: string) => {
-        console.log("Device registered for push.  Access token: " + deviceToken);
-      })
-      .catch((error: Error) => {
-        console.log("Error: " + error);
-      });      
+      });     
   }
 
   onDrawerButtonTap(): void {

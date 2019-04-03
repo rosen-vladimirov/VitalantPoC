@@ -32,6 +32,14 @@ import { isAndroid, isIOS, device, screen } from "tns-core-modules/platform";
 import { TaskDetailsComponent } from "./tasks/task-details/task-details.component";
 import { ExpensesComponent } from "./expenses/expenses.component";
 
+import * as platform from "tns-core-modules/platform";
+
+declare var GMSServices: any;
+
+if (platform.isIOS) { 
+    GMSServices.provideAPIKey("AIzaSyDu8qs7tKXoLYW4Z_dvi9Kh3ZjKE56kMFI");
+  }
+
 @NgModule({
   declarations: [
     AppComponent,

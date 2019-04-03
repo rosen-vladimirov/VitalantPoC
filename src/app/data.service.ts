@@ -123,6 +123,12 @@ export class DataService {
     }
   }
 
+  getBloodCenters(query: string) {
+    return Kinvey.CustomEndpoint.execute("findBloodCenters",
+      {
+        searchPhrase: query
+      });
+  }
   getSkiAccounts(): any {
     const query = new Kinvey.Query();
     query.equalTo("AccountNumber", "4561987");

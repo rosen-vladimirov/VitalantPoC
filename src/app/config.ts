@@ -1,7 +1,7 @@
 export class Config {
   //KINVEY
-  static appKey: string = "kid_SJAGGgcBm";
-  static appSecret: string = "27d5de1f432f49dfa8cd8da1c37f11ec";
+  static appKey: string = "kid_HyiAQgetV";
+  static appSecret: string = "8e6b65b5cedf406abb712e27a7f89c17";
 
   //LOGIN
   static appLogo: string = "images/logo-1.png";
@@ -42,7 +42,7 @@ export class Config {
 
   //MAP
   static mapPageTitle: string = "Map";
-  static mapPageVisible: boolean = false;
+  static mapPageVisible: boolean = true;
 
   //CHAT
   static chatPageTitle: string = "Chat";
