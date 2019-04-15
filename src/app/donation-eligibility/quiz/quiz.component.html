@@ -1,0 +1,196 @@
+<ActionBar class="action-bar">
+        <Label class="action-bar-title" [text]="actionBarText" class="font-weight-bold"></Label>
+        <ActionItem (tap)="appService.logOut()" ios.position="right">
+            <Button text="Cancel" class="text-center action-item text-primary"></Button>
+        </ActionItem>
+    </ActionBar>
+    
+    <GridLayout class="page" rows="*">
+        <ScrollView row="0">
+            <StackLayout class="m-x-15 p-t-30" *ngIf="showAgeEligibilityQuestion">
+                <Image src="~/app/images/birthday_cake.png" height="200" class="m-b-15 m-t-15"></Image>
+                <StackLayout *ngIf="showAgeEligibilityAnswers">
+                    <Label text="I am over 17 years old." class="h2 text-center" textWrap="true"></Label>
+                    <Button text="YES" class="btn btn-primary btn-active"
+                        (tap)="isOverSeventeen()">
+                    </Button>
+                    <Button text="NO" class="btn btn-primary btn-active"
+                        (tap)="isNotOverSeventeen()">
+                    </Button>
+                </StackLayout>
+                <StackLayout *ngIf="showUnderageText">
+                    <Label 
+                        text="Unfortunately you are not able to donate blood just yet. But you can still get involved in saving lives, and learn more about when you can start donating." 
+                        class="h3 text-center" 
+                        textWrap="true">
+                    </Label>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout class="m-x-15 p-t-30" *ngIf="showTattooQuestion">
+                <Image src="~/app/images/tattoo_icon.png" height="200" class="m-b-15 m-t-15"></Image>
+                <StackLayout *ngIf="showTattooAnswers">
+                    <Label text="I have had a tattoo or piercing in the last 3 months" 
+                        class="h2 text-center" 
+                        textWrap="true">
+                    </Label>
+                    <Button text="YES" class="btn btn-primary btn-active"
+                        (tap)="hasTattoo()">
+                    </Button>
+                    <Button text="NO" class="btn btn-primary btn-active"
+                        (tap)="notHasTattoo()">
+                    </Button>
+                </StackLayout>
+                <StackLayout *ngIf="showHasTattooText">
+                    <Label 
+                        text="Unfortunately you are not able to donate blood right now.  Learn more about when you will be able to start saving lives.  In the meantime, ever thought of becoming a volunteer?" 
+                        class="h3 text-center" 
+                        textWrap="true">
+                    </Label>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout class="m-x-15 p-t-30" *ngIf="showTravelQuestion">
+                    <Image src="~/app/images/travel_icon.png" height="200" class="m-b-15 m-t-15"></Image>
+                    <StackLayout *ngIf="showTravelAnswers">
+                        <Label text="I have travelled outside Canada or the U.S. in the last 12 months" 
+                            class="h2 text-center" 
+                            textWrap="true">
+                        </Label>
+                        <Button text="YES" class="btn btn-primary btn-active"
+                            (tap)="hasTravelled()">
+                        </Button>
+                        <Button text="NO" class="btn btn-primary btn-active"
+                            (tap)="hasNotTravelled()">
+                        </Button>
+                    </StackLayout>
+                    <StackLayout *ngIf="showHasTravelledAbroadText">
+                        <Label 
+                            text="Depending on what countries you have visited and for how long, you may be able to donate blood.  Learn more about whether you can donate." 
+                            class="h3 text-center" 
+                            textWrap="true">
+                        </Label>
+                    </StackLayout>
+            </StackLayout>
+            <StackLayout class="m-x-15 p-t-30" *ngIf="showDentalQuestion">
+                    <Image src="~/app/images/dentist_icon.png" height="200" class="m-b-15 m-t-15"></Image>
+                    <StackLayout *ngIf="showDentalAnswers">
+                        <Label text="I have had a cleaning or filling today, or dental surgery in the last 72 hours" 
+                            class="h2 text-center" 
+                            textWrap="true">
+                        </Label>
+                        <Button text="YES" class="btn btn-primary btn-active"
+                            (tap)="hasHadDentalAppt()">
+                        </Button>
+                        <Button text="NO" class="btn btn-primary btn-active"
+                            (tap)="hasNotHadDentalAppt()">
+                        </Button>
+                    </StackLayout>
+                    <StackLayout *ngIf="showHasHadDentalWorkText">
+                        <Label 
+                            text="You are not able to donate blood right now, but you can still book your appointment after the required time has passed.  Learn more about other eligibility criteria." 
+                            class="h3 text-center" 
+                            textWrap="true">
+                        </Label>
+                    </StackLayout>
+            </StackLayout>
+            <StackLayout class="m-x-15 p-t-30" *ngIf="showPregnantQuestion">
+                    <Image src="~/app/images/pregnant_icon.png" height="200" class="m-b-15 m-t-15"></Image>
+                    <StackLayout *ngIf="showPregnantAnswers">
+                        <Label text="I have been pregnant or had a baby in the last 6 months." 
+                            class="h2 text-center" 
+                            textWrap="true">
+                        </Label>
+                        <Button text="YES" class="btn btn-primary btn-active"
+                            (tap)="hasBeenPregnant()">
+                        </Button>
+                        <Button text="NO" class="btn btn-primary btn-active"
+                            (tap)="hasNotBeenPregnant()">
+                        </Button>
+                    </StackLayout>
+                    <StackLayout *ngIf="showHasBeenPregnantText">
+                        <Label 
+                            text="You are not able to donate blood right now, find out more about when you can start.  If you are pregnant, you could be eligible to donate your baby's cord blood." 
+                            class="h3 text-center" 
+                            textWrap="true">
+                        </Label>
+                    </StackLayout>
+            </StackLayout>
+            <StackLayout class="m-x-15 p-t-30" *ngIf="showUKQuestion">
+                    <Image src="~/app/images/uk_icon.png" height="200" class="m-b-15 m-t-15"></Image>
+                    <StackLayout *ngIf="showUKAnswers">
+                        <Label text="I have spent 3 months or more cumulatively in the United Kingdom." 
+                            class="h2 text-center" 
+                            textWrap="true">
+                        </Label>
+                        <Button text="YES" class="btn btn-primary btn-active"
+                            (tap)="hasBeenToUK()">
+                        </Button>
+                        <Button text="NO" class="btn btn-primary btn-active"
+                            (tap)="hasNotBeenToUK()">
+                        </Button>
+                    </StackLayout>
+                    <StackLayout *ngIf="showHasBeenToUKText">
+                        <Label 
+                            text="Unfortunately, you may not abe able to donate blood.  Learn more or call 1-888-236-6283 to speak to a nurse." 
+                            class="h3 text-center" 
+                            textWrap="true">
+                        </Label>
+                    </StackLayout>
+            </StackLayout>
+            <StackLayout class="m-x-15 p-t-30" *ngIf="showMedicationQuestion">
+                    <Image src="~/app/images/medication_icon.png" height="200" class="m-b-15 m-t-15"></Image>
+                    <StackLayout *ngIf="showMedicationAnswers">
+                        <Label text="I am taking prescription medications." 
+                            class="h2 text-center" 
+                            textWrap="true">
+                        </Label>
+                        <Button text="YES" class="btn btn-primary btn-active"
+                            (tap)="hasTakenMedication()">
+                        </Button>
+                        <Button text="NO" class="btn btn-primary btn-active"
+                            (tap)="hasNotTakenMedication()">
+                        </Button>
+                    </StackLayout>
+                    <StackLayout *ngIf="showTakesMedicationText">
+                        <Label 
+                            text="Some medications or the underlying causes that require you to take a particular medication may affect your eligibility.  Call 1-888-236-6283 to speak to a nurse to find out.  Learn more about other eligibility criteria." 
+                            class="h3 text-center" 
+                            textWrap="true">
+                        </Label>
+                    </StackLayout>
+            </StackLayout>
+            <StackLayout class="m-x-15 p-t-30" *ngIf="showWeightQuestion">
+                    <Image src="~/app/images/weight_icon.png" height="200" class="m-b-15 m-t-15"></Image>
+                    <StackLayout *ngIf="showWeightAnswers">
+                        <Label text="I weigh more than 110 lbs." 
+                            class="h2 text-center" 
+                            textWrap="true">
+                        </Label>
+                        <Button text="YES" class="btn btn-primary btn-active"
+                            (tap)="isAboveWeight()">
+                        </Button>
+                        <Button text="NO" class="btn btn-primary btn-active"
+                            (tap)="isBelowWeight()">
+                        </Button>
+                    </StackLayout>
+                    <StackLayout *ngIf="showBelowWeightText">
+                        <Label 
+                            text="Unfortunately, you are not able to donate blood, and here's why.  There are lots of ways to get involved in saving lives.  Have you ever thought about becoming a volunteer?  Find out more." 
+                            class="h3 text-center" 
+                            textWrap="true">
+                        </Label>
+                    </StackLayout>
+            </StackLayout>
+            <StackLayout class="m-x-15 p-t-30" *ngIf="quizCompleted">
+                    <Image src="~/app/images/blood_icon.png" height="200" class="m-b-15 m-t-15"></Image>
+                    <StackLayout>
+                        <Label text="Great!  You are now ready to book an appointment to give blood." 
+                            class="h2 text-center" 
+                            textWrap="true">
+                        </Label>
+                        <Button text="BOOK NOW" class="btn btn-primary btn-active"
+                            (tap)="goToMap()">
+                        </Button>
+                    </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </GridLayout>

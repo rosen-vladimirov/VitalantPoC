@@ -1,0 +1,39 @@
+<ActionBar class="action-bar">
+        <NavigationButton text="Back" android.systemIcon="ic_menu_back" (tap)="back()"></NavigationButton>
+        <Label class="action-bar-title" [text]="titleText"></Label>
+</ActionBar>
+<GridLayout>
+    <GridLayout rows="auto,*">
+        <StackLayout row="0">
+            <GridLayout rows="*,*" class="p-r-10 p-l-10 p-b-20 p-t-10">
+                <StackLayout row="0">
+                    <Label class="h3" style="color: red;"
+                        [text]="placeName" row="0"
+                        textWrap="true">
+                    </Label>
+                </StackLayout>
+                <StackLayout row="1">
+                    <Label class="h4" [text]="placeAddress" row="1"
+                        textWrap="true">
+                    </Label>
+                </StackLayout>
+            </GridLayout>
+        </StackLayout>
+        <GridLayout
+            xmlns="http://schemas.nativescript.org/tns.xsd"
+            xmlns:calendar="nativescript-ui-calendar"
+            row="1">
+            <RadCalendar
+                id="calendarId"
+                [viewMode]="viewMode" 
+                [eventSource]="events"
+                eventsViewMode="Inline"
+                selectionMode="Single"
+                (dateSelected)="onDateSelected($event)"
+                (inlineEventSelected)="onInlineEventSelectedEvent($event)"
+                (dayViewEventSelected)="onDayViewEventSelectedEvent($event)">
+            </RadCalendar>
+        </GridLayout>
+    </GridLayout>
+</GridLayout>
+

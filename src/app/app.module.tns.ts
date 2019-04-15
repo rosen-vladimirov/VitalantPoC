@@ -33,6 +33,12 @@ import { TaskDetailsComponent } from "./tasks/task-details/task-details.componen
 import { ExpensesComponent } from "./expenses/expenses.component";
 
 import * as platform from "tns-core-modules/platform";
+import { CalendarComponent } from "./calendar/calendar.component";
+
+import { NativeScriptUICalendarModule } from "nativescript-ui-calendar/angular"
+import { AppointmentComponent } from "./calendar/appointment/appointment.component";
+import { DonationComponent } from "./donation-eligibility/donation.component";
+import { QuizComponent } from "./donation-eligibility/quiz/quiz.component";
 
 declare var GMSServices: any;
 
@@ -59,14 +65,19 @@ if (platform.isIOS) {
     AddTaskComponent,
     FileDetailsComponent,
     LayoutComponent,
-    ExpensesComponent
+    ExpensesComponent,
+    CalendarComponent,
+    AppointmentComponent,
+    DonationComponent,
+    QuizComponent
   ],
   imports: [
     NativeScriptModule,
     AppRoutingModule,
     NativeScriptFormsModule,
     NativeScriptUISideDrawerModule,
-    NativeChatModule
+    NativeChatModule,
+    NativeScriptUICalendarModule
   ],
   providers: [],
   bootstrap: [AppComponent],

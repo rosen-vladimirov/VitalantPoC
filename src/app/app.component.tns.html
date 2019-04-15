@@ -16,9 +16,9 @@ http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawe
           <Label col="0" text="&#xf015;" class="fa"></Label>
           <Label col="1" [text]="homePageTitle" class="p-r-10"></Label>
         </GridLayout>
-        <GridLayout columns="auto, *" class="sidedrawer-list-item" (tap)="onNavItemTap('/accounts')" *ngIf="accountsPageVisible">
+        <GridLayout columns="auto, *" class="sidedrawer-list-item" (tap)="onNavItemTap('/donation-eligibility')" *ngIf="accountsPageVisible">
           <Label col="0" text="&#xf2bd;" class="fa"></Label>
-          <Label col="1" [text]="accountsPageTitle" class="p-r-10"></Label>
+          <Label col="1" [text]="donationPageTitle" class="p-r-10"></Label>
         </GridLayout>
         <GridLayout columns="auto, *" class="sidedrawer-list-item" (tap)="onNavItemTap('/products')" *ngIf="productsPageVisible">
           <Label col="0" text="&#xf0cb;" class="fa"></Label>

@@ -65,10 +65,18 @@ export class DataService {
     Kinvey.DataStoreType.Sync
   );
 
+  private appointmentStore = Kinvey.DataStore.collection(
+    "appointments",
+    Kinvey.DataStoreType.Network
+  );
+
   public selectedFile: any;
   public isLoggedIn: BehaviorSubject<boolean>;
   private user: BehaviorSubject<Kinvey.User>;
   public username: Observable<string>;
+
+  public placeName: string;
+  public placeAddress: string;
 
   getTasks() {
     this.tasksStore.subscribe({
@@ -129,6 +137,37 @@ export class DataService {
         searchPhrase: query
       });
   }
+
+  getBloodCentersWithCoordinates(latLongCoordinates: any) {
+    return Kinvey.CustomEndpoint.execute("findBloodCenters",
+      {
+        coordinates: latLongCoordinates
+      });
+  }
+
+  getAvailableAppointments(placeId: string) {
+    const query = new Kinvey.Query();
+    query.equalTo("Facility", placeId);
+    return this.appointmentStore.find(query);
+  }
+
+  getCenterDetail(id: string) {
+    return Kinvey.CustomEndpoint.execute("getCenterDetail",
+      {
+        placeId: id
+      });
+  }
+
+  bookAppointment(id: string, patient: string) {
+
+    console.log("Patient: " + JSON.stringify(patient));
+    return Kinvey.CustomEndpoint.execute("bookAppointment",
+      {
+        id: id,
+        patientName: patient
+      });
+  }
+
   getSkiAccounts(): any {
     const query = new Kinvey.Query();
     query.equalTo("AccountNumber", "4561987");

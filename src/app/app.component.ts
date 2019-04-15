@@ -20,6 +20,7 @@ export class AppComponent implements OnInit {
   filesPageTitle: string;
   arPageTitle: string;
   chatPageTitle: string;
+  donationPageTitle: string;
   accountsPageTitle: string;
   homePageVisible: boolean;
   accountsPageVisible: boolean;
@@ -46,6 +47,7 @@ export class AppComponent implements OnInit {
     this.offlinePageTitle = Config.offlinePageTitle;
     this.chatPageTitle = Config.chatPageTitle;
     this.arPageTitle = Config.arPageTitle;
+    this.donationPageTitle = "Can I Donate?";
 
     this.homePageVisible = Config.homePageVisible;
     this.productsPageVisible = Config.productsPageVisible;
@@ -64,7 +66,6 @@ export class AppComponent implements OnInit {
   }
 
   onNavItemTap(navItemRoute: string): void {
-    console.log("Inside onNavItemTap " + navItemRoute);
     this.router.navigate([navItemRoute]);
     DrawerHelper.hide();
   }

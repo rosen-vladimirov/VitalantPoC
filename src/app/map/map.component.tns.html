@@ -15,20 +15,68 @@
     <Label class="action-bar-title" text="Find Centers"></Label>
 </ActionBar>
 
-<GridLayout class="page" rows="auto,*">
+<GridLayout class="page" rows="auto,*,*,*">
     <SearchBar row="0" hint="Enter location" [text]="searchPhrase" 
         (submit)="onSubmit($event)" 
         color="red" textFieldBackgroundColor="white" textFieldHintColor="red">
     </SearchBar>
     
-    <GridLayout row="1">
+    <GridLayout id="mapGridLayout" row="1">
             <GridLayout xmlns="http://www.nativescript.org/tns.xsd" xmlns:maps="nativescript-google-maps-sdk" height="100%"
                     verticalAlignment="top" row="0">
             <maps:mapView
                 latitude="{{latitude}}" 
                 longitude="{{longitude}}"
                 (mapReady)="onMapReady($event)" 
-                zoom="12" />
+                zoom="11" 
+                (markerSelect)="onMarkerSelect($event)"
+                (cameraChanged)="onCameraChanged($event)"
+                />
             </GridLayout>
+    </GridLayout>
+    <GridLayout xmlns="http://www.nativescript.org/tns.xsd" 
+        xmlns:lv="nativescript-ui-listview" row="3"
+        *ngIf="showListView" id="resultsListLayout">
+        <ListView class="list-group" [items]="items">
+            <ng-template let-item="item">
+                <GridLayout class="list-group-item" rows="auto, *" columns="auto,*,*,*,*" (tap)="goToDetails(item)">
+                    <Image src="~/assets/images/heart_icon.png" row="0" col="0" rowSpan="2"
+                        height="50" width="50"></Image>
+                    <GridLayout rows="*,*" columns="*" 
+                        row="0" class="p-l-10" col="1" colSpan="4">
+                        <Label row="0" col="1" colSpan="4" [text]="item.name" 
+                            class="list-group-item-heading">
+                        </Label>
+                        <Label row="1" col="1" colSpan="4" [text]="item.formatted_address" 
+                            class="list-group-item-text" textWrap="true">
+                        </Label>
+                    </GridLayout>
+                </GridLayout>
+            </ng-template>
+        </ListView>
+    </GridLayout>
+    <GridLayout *ngIf="showDetailView" id="detailLayout" row="3"
+        rows="*,*" class="p-l-10">
+        <GridLayout row="0">
+            <GridLayout rows="*,*">
+                <Label row="0"
+                    [text]="placeDetail.name" textWrap="true">
+                </Label>
+                <GridLayout row="1" rows="*,*" columns="*,*">
+                    <Label row="0" col="0" text="Phone:"></Label>
+                    <Label row="1" col="0" [text]="placeDetail.formatted_phone_number">
+                    </Label>
+                    <Button class="btn btn-primary" row="0" rowSpan="2"
+                        col="1" text="Book an Appointment" textWrap="true"
+                        (tap)="bookAppointment(placeDetail)">
+                    </Button>
+                </GridLayout>
+            </GridLayout>
+        </GridLayout>
+        <GridLayout row="1">
+            <Label [text]="placeDetail.formatted_address" textWrap="true"
+                >
+            </Label>
+        </GridLayout>
     </GridLayout>
 </GridLayout>

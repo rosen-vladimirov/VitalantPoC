@@ -1,0 +1,22 @@
+<ActionBar class="action-bar">
+        <NavigationButton text="Back" android.systemIcon="ic_menu_back" (tap)="back()"></NavigationButton>
+        <Label class="action-bar-title" text="Can I Donate?" class="font-weight-bold"></Label>
+    </ActionBar>
+    
+    <GridLayout class="page" rows="*">
+            <ScrollView row="0">
+                <StackLayout class="m-x-15 p-t-30">
+                    <Image src="~/app/images/quiz_icon.png" height="200" class="m-b-15 m-t-15"></Image>
+                    <StackLayout>
+                        <Label text="To get you started we have put together a few basic eligibility questions." class="h2 text-center" textWrap="true"></Label>
+                        <Label class="h3 text-center" 
+                            text="Note: At the time of your donation, you will be asked these questions again as well as a number of other questions that are included as part of the donor questionnaire.  Please note that final eligibility is determined by staff at the time of your appointment."
+                            textWrap="true">
+                        </Label>
+                        <Button text="START NOW" class="btn btn-primary btn-active"
+                            (tap)="onGetStartedButtonTap()">
+                        </Button>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+    </GridLayout>

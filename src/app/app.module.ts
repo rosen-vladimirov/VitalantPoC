@@ -21,6 +21,7 @@ import { AccountsComponent } from './accounts/accounts.component';
 import { AccountDetailsComponent } from './accounts/account-details/account-details.component';
 import { SettingsComponent } from "./settings/settings.component";
 import { TaskDetailsComponent } from "./tasks/task-details/task-details.component";
+import { CalendarComponent } from "./calendar/calendar.component";
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { TaskDetailsComponent } from "./tasks/task-details/task-details.componen
     ArComponent,
     AccountsComponent,
     AccountDetailsComponent,
-    SettingsComponent
+    SettingsComponent,
+    CalendarComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, NativeScriptUIListViewModule],
   providers: [],

@@ -18,6 +18,10 @@ import { AccountsComponent } from "./accounts/accounts.component";
 import { AccountDetailsComponent } from "./accounts/account-details/account-details.component";
 import { TaskDetailsComponent } from "./tasks/task-details/task-details.component";
 import { ExpensesComponent } from "./expenses/expenses.component";
+import { CalendarComponent } from "./calendar/calendar.component";
+import { AppointmentComponent } from "./calendar/appointment/appointment.component";
+import { DonationComponent } from "./donation-eligibility/donation.component";
+import { QuizComponent } from "./donation-eligibility/quiz/quiz.component";
 
 export const routes: Routes = [
   {
@@ -40,7 +44,11 @@ export const routes: Routes = [
       { path: "map", component: MapComponent },
       { path: "chat", component: ChatComponent },
       { path: "ar", component: ArComponent },
-      { path: "expenses", component: ExpensesComponent }
+      { path: "expenses", component: ExpensesComponent },
+      { path: "calendar/:id", component: CalendarComponent},
+      { path: "appointment", component: AppointmentComponent},
+      { path: "donation-eligibility", component: DonationComponent},
+      { path: "donation-eligibility/quiz", component: QuizComponent}
     ]
   },
   { path: "login", component: LoginComponent, canActivate: [AnonGuard] }
