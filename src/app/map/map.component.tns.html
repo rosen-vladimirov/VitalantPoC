@@ -15,10 +15,11 @@
     <Label class="action-bar-title" text="Find Centers"></Label>
 </ActionBar>
 
-<GridLayout class="page" rows="auto,*,*,*">
+<GridLayout class="page" rows="auto,*,*,*,*">
     <SearchBar row="0" hint="Enter location" [text]="searchPhrase" 
         (submit)="onSubmit($event)" 
-        color="red" textFieldBackgroundColor="white" textFieldHintColor="red">
+        color="red" textFieldBackgroundColor="white" textFieldHintColor="red"
+        style="background-color: orange;">
     </SearchBar>
     
     <GridLayout id="mapGridLayout" row="1">
@@ -35,47 +36,57 @@
             </GridLayout>
     </GridLayout>
     <GridLayout xmlns="http://www.nativescript.org/tns.xsd" 
-        xmlns:lv="nativescript-ui-listview" row="3"
-        *ngIf="showListView" id="resultsListLayout">
-        <ListView class="list-group" [items]="items">
+        xmlns:lv="nativescript-ui-listview" row="3" rowSpan="2"
+        *ngIf="showListView" id="resultsListLayout"
+        style="background-color: #682B7D;">
+        <ListView class="list-group" [items]="items"
+            style="background-color: #682B7D;">
             <ng-template let-item="item">
-                <GridLayout class="list-group-item" rows="auto, *" columns="auto,*,*,*,*" (tap)="goToDetails(item)">
+                <GridLayout class="list-group-item" rows="auto, *" columns="auto,*,*,*,*" 
+                    (tap)="goToDetails(item)">
                     <Image src="~/assets/images/heart_icon.png" row="0" col="0" rowSpan="2"
                         height="50" width="50"></Image>
                     <GridLayout rows="*,*" columns="*" 
-                        row="0" class="p-l-10" col="1" colSpan="4">
+                        row="0" class="p-l-10 p-r-10 p-t-10" col="1" colSpan="4">
                         <Label row="0" col="1" colSpan="4" [text]="item.name" 
-                            class="list-group-item-heading">
+                            class="list-group-item-heading" 
+                            style="color: white; font-weight: bold;" textWrap="true">
                         </Label>
                         <Label row="1" col="1" colSpan="4" [text]="item.formatted_address" 
-                            class="list-group-item-text" textWrap="true">
+                            class="list-group-item-text" textWrap="true" style="color: white;">
                         </Label>
                     </GridLayout>
                 </GridLayout>
             </ng-template>
         </ListView>
     </GridLayout>
-    <GridLayout *ngIf="showDetailView" id="detailLayout" row="3"
-        rows="*,*" class="p-l-10">
+    <GridLayout *ngIf="showDetailView" id="detailLayout" row="3" rowSpan="2"
+        rows="*,*" class="p-l-10" style="background-color: #682B7D">
         <GridLayout row="0">
             <GridLayout rows="*,*">
                 <Label row="0"
-                    [text]="placeDetail.name" textWrap="true">
+                    [text]="placeDetail.name" textWrap="true"
+                    style="font-weight: bold; color: white;" class="list-group-item-heading">
                 </Label>
-                <GridLayout row="1" rows="*,*" columns="*,*">
-                    <Label row="0" col="0" text="Phone:"></Label>
-                    <Label row="1" col="0" [text]="placeDetail.formatted_phone_number">
+                <GridLayout row="1" rows="auto,*" columns="*,*">
+                    <Label row="0" col="0" [text]="placeDetail.website"
+                        style="color: white;" textWrap="true"></Label>
+                    <Label row="1" col="0" 
+                        style="color: white;"
+                        [text]="placeDetail.formatted_phone_number">
                     </Label>
-                    <Button class="btn btn-primary" row="0" rowSpan="2"
+                    <Button class="login btn btn-primary" row="0" rowSpan="2"
                         col="1" text="Book an Appointment" textWrap="true"
-                        (tap)="bookAppointment(placeDetail)">
+                        (tap)="bookAppointment(placeDetail)"
+                        textAlignment="center"
+                        style="font-weight: bold;">
                     </Button>
                 </GridLayout>
             </GridLayout>
         </GridLayout>
-        <GridLayout row="1">
+        <GridLayout row="1" class="p-t-10">
             <Label [text]="placeDetail.formatted_address" textWrap="true"
-                >
+                class="list-group-item-text" style="color: white;">
             </Label>
         </GridLayout>
     </GridLayout>

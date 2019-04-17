@@ -8,6 +8,7 @@ import * as moment from "moment";
 
 @Component({
     selector: "app-appt",
+    styleUrls: ["appointment.component.scss"],
     templateUrl: "appointment.component.html"
 })
 export class AppointmentComponent implements OnInit {

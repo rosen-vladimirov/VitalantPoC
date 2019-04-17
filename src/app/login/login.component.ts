@@ -9,11 +9,18 @@ import { Config } from "../config";
   styleUrls: ["./login.component.scss"]
 })
 export class LoginComponent implements OnInit {
-  username = "admin";
-  password = "admin";
+  firstName: string;
+  lastName: string;
+  username: string;
+  email: string;
+  password: string;
   processing: boolean;
   logo: string;
   title: string;
+
+  showLogin: boolean = false;
+  showRegister: boolean = false;
+
   constructor(private dataService: DataService, private router: Router) {
     // Use the component constructor to inject providers.
   }
@@ -22,6 +29,14 @@ export class LoginComponent implements OnInit {
     // Init your component properties here.
     this.logo = Config.appLogo;
     this.title = Config.appTitle;
+  }
+
+  showLoginFields(): void {
+    this.showLogin = true;
+  }
+
+  showRegisterFields(): void {
+    this.showRegister = true;
   }
 
   async login() {

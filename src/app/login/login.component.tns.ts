@@ -12,11 +12,19 @@ import { RouterExtensions } from "nativescript-angular/router";
   styleUrls: ["./login.component.scss"]
 })
 export class LoginComponent implements OnInit {
-  username = "admin";
-  password = "admin";
-  processing: boolean;
   logo: string;
   title: string;
+
+  firstName: string;
+  lastName: string;
+  username: string;
+  email: string;
+  password: string;
+  processing: boolean;
+
+  showLogin: boolean = false;
+  showRegister: boolean = false;
+
   constructor(
     private dataService: DataService,
     private router: RouterExtensions,
@@ -33,15 +41,41 @@ export class LoginComponent implements OnInit {
   }
 
   async login() {
-    try {
-      this.processing = true;
-      await this.dataService.login(this.username, this.password);
-      console.log("LOG IN SUCsCESSFUL");
-      this.router.navigate(["home"], { clearHistory: true });
-    } catch {
-      alert("Invalid credentials");
-    } finally {
-      this.processing = false;
+    if (this.showLogin === false) {
+      this.showLogin = true;
+      this.showRegister = false;
+    }
+    else {
+      try {
+        this.processing = true;
+        await this.dataService.login(this.username, this.password);
+        console.log("LOG IN SUCsCESSFUL");
+        this.router.navigate(["home"], { clearHistory: true });
+      } catch {
+        alert("Invalid credentials");
+      } finally {
+        this.processing = false;
+      }
+    }
+  }
+
+  async signUp() {
+    if (this.showRegister === false) {
+      console.log("Gets here");
+      this.showRegister = true;
+      this.showLogin = false;
+    }
+    else {
+      try {
+        this.processing = true;
+        await this.dataService.signup(this.username, this.password, this.email);
+        console.log("registration successful");
+        this.router.navigate(["home"], { clearHistory: true });
+      } catch {
+        alert("Invalid request");
+      } finally {
+        this.processing = false;
+      }
     }
   }
   async loginWithMIC() {

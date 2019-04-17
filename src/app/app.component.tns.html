@@ -4,14 +4,17 @@ Learn more about the RadSideDrawer UI component and how it can be customized in 
 http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawer/getting-started
 -->
 <RadSideDrawer [gesturesEnabled]="gesturesEnabled | async">
-  <GridLayout tkDrawerContent rows="auto, *" class="sidedrawer sidedrawer-left">
-    <StackLayout row="0" class="sidedrawer-header" (tap)="goToSettings()">
+  <GridLayout tkDrawerContent rows="auto, *" class="sidedrawer sidedrawer-left"
+    style="background-color: #D45C27;">
+    <StackLayout row="0" class="sidedrawer-header" 
+      style="background-color: #D45C27;" (tap)="goToSettings()">
       <Label class="sidedrawer-header-image fa" text="&#xf2bd;"></Label>
       <Label class="sidedrawer-header-brand user" [text]="user | async"></Label>
     </StackLayout>
 
     <ScrollView row="1">
-      <StackLayout class="sidedrawer-content">
+      <StackLayout class="sidedrawer-content"
+        style="background-color: #add8e6;">
         <GridLayout columns="auto, *" class="sidedrawer-list-item" (tap)="onNavItemTap('/')" *ngIf="homePageVisible">
           <Label col="0" text="&#xf015;" class="fa"></Label>
           <Label col="1" [text]="homePageTitle" class="p-r-10"></Label>
@@ -19,10 +22,6 @@ http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawe
         <GridLayout columns="auto, *" class="sidedrawer-list-item" (tap)="onNavItemTap('/donation-eligibility')" *ngIf="accountsPageVisible">
           <Label col="0" text="&#xf2bd;" class="fa"></Label>
           <Label col="1" [text]="donationPageTitle" class="p-r-10"></Label>
-        </GridLayout>
-        <GridLayout columns="auto, *" class="sidedrawer-list-item" (tap)="onNavItemTap('/products')" *ngIf="productsPageVisible">
-          <Label col="0" text="&#xf0cb;" class="fa"></Label>
-          <Label col="1" [text]="productsPageTitle" class="p-r-10"></Label>
         </GridLayout>
         <GridLayout columns="auto, *" class="sidedrawer-list-item" (tap)="onNavItemTap('/files')" *ngIf="filesPageVisible">
           <Label col="0" text="&#xf15c;" class="fa"></Label>
@@ -33,8 +32,8 @@ http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawe
           <Label col="1" [text]="tasksPageTitle" class="p-r-10"></Label>
         </GridLayout>
         <GridLayout columns="auto, *" class="sidedrawer-list-item" (tap)="onNavItemTap('/map')" *ngIf="mapPageVisible">
-          <Label col="0" text="&#xf0ae;" class="fa"></Label>
-          <Label col="1" [text]="mapPageTitle" class="p-r-10"></Label>
+          <Label col="0" text="&#xf689;" class="fa"></Label>
+          <Label col="1" text="Find Centres" class="p-r-10"></Label>
         </GridLayout>
         <GridLayout columns="auto, *" class="sidedrawer-list-item" (tap)="onNavItemTap('/chat')" *ngIf="chatPageVisible">
           <Label col="0" text="&#xf086;" class="fa"></Label>
@@ -44,9 +43,9 @@ http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawe
           <Label col="0" text="&#xf042;" class="fa"></Label>
           <Label col="1" [text]="arPageTitle" class="p-r-10"></Label>
         </GridLayout>
-        <GridLayout columns="auto, *" class="sidedrawer-list-item" (tap)="onNavItemTap('/expenses')">
-          <Label col="0" text="&#xf042;" class="fa"></Label>
-          <Label col="1" text="Expenses" class="p-r-10"></Label>
+        <GridLayout columns="auto, *" class="sidedrawer-list-item" (tap)="onNavItemTap('/notes')">
+          <Label col="0" text="&#xf481;" class="fa"></Label>
+          <Label col="1" text="Notes" class="p-r-10"></Label>
         </GridLayout>
       </StackLayout>
     </ScrollView>

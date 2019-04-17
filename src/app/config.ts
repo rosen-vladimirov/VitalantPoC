@@ -4,15 +4,15 @@ export class Config {
   static appSecret: string = "8e6b65b5cedf406abb712e27a7f89c17";
 
   //LOGIN
-  static appLogo: string = "images/logo-1.png";
+  static appLogo: string = "images/vitalant-logo.png";
   static appTitle: string = "ACME Field Service";
 
   //HOME
   static homePageTitle: string = "Home";
   static logo: string =
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Acme_Markets_lolo.svg/1200px-Acme_Markets_lolo.svg.png";
+    "https://media.graytvinc.com/images/Vitalant+Logo.jpg";
   static homePageVisible: boolean = true;
-  static homePageHeading: string = "For all your needs in the field..";
+  static homePageHeading: string = "Transform a life, and your own..";
 
   //ACCOUNTS
   static accountsPageTitle: string = "Accounts";

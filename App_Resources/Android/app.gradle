@@ -5,6 +5,12 @@
 //	compile 'com.android.support:recyclerview-v7:+'
 //}
 
+project.ext {
+  googlePlayServicesVersion = "11.4.0"
+  firebaseMessagingVersion = "11.4.0"
+  supportVersion = "26.0.0"
+}
+
 android {  
   defaultConfig {  
     generatedDensities = []
@@ -19,7 +25,7 @@ android {
   }  
   aaptOptions {  
     additionalParameters "--no-version-vectors"  
-  }  
+  }
 } 
 
 def settingsGradlePath
@@ -36,3 +42,5 @@ if(settingsGradleFile.exists())
 {
     apply from: settingsGradleFile;
 }
+
+apply plugin: 'com.google.gms.google-services'

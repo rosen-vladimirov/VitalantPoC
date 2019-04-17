@@ -241,6 +241,24 @@ export class DataService {
     }
   }
 
+  signup(name, userPassword, userEmail): Promise<Kinvey.User> {
+    if (Kinvey.User.getActiveUser()) {
+      console.log("already logged in");
+      return Promise.resolve(Kinvey.User.getActiveUser());
+    }
+    else {
+      return Kinvey.User.signup({
+        username: name,
+        password: userPassword,
+        email: userEmail
+      }).then(user => {
+        this.isLoggedIn.next(true);
+        this.user.next(user);
+        return Promise.resolve(user);
+      })
+    }
+  }
+
   loginWithMIC(redirectUri: string): Promise<Kinvey.User> {
     if (Kinvey.User.getActiveUser()) {
       return Promise.resolve(Kinvey.User.getActiveUser());

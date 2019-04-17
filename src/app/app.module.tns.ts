@@ -39,6 +39,7 @@ import { NativeScriptUICalendarModule } from "nativescript-ui-calendar/angular"
 import { AppointmentComponent } from "./calendar/appointment/appointment.component";
 import { DonationComponent } from "./donation-eligibility/donation.component";
 import { QuizComponent } from "./donation-eligibility/quiz/quiz.component";
+import { NotesComponent } from "./notes/notes.component";
 
 declare var GMSServices: any;
 
@@ -69,7 +70,8 @@ if (platform.isIOS) {
     CalendarComponent,
     AppointmentComponent,
     DonationComponent,
-    QuizComponent
+    QuizComponent,
+    NotesComponent
   ],
   imports: [
     NativeScriptModule,

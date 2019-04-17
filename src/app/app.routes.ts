@@ -22,6 +22,7 @@ import { CalendarComponent } from "./calendar/calendar.component";
 import { AppointmentComponent } from "./calendar/appointment/appointment.component";
 import { DonationComponent } from "./donation-eligibility/donation.component";
 import { QuizComponent } from "./donation-eligibility/quiz/quiz.component";
+import { NotesComponent } from "./notes/notes.component";
 
 export const routes: Routes = [
   {
@@ -48,7 +49,8 @@ export const routes: Routes = [
       { path: "calendar/:id", component: CalendarComponent},
       { path: "appointment", component: AppointmentComponent},
       { path: "donation-eligibility", component: DonationComponent},
-      { path: "donation-eligibility/quiz", component: QuizComponent}
+      { path: "donation-eligibility/quiz", component: QuizComponent},
+      { path: "notes", component: NotesComponent}
     ]
   },
   { path: "login", component: LoginComponent, canActivate: [AnonGuard] }

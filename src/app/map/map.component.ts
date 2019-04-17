@@ -53,7 +53,7 @@ export class MapComponent implements OnInit {
     this.title = Config.mapPageTitle;
 
     this.mapGridLayout = <GridLayout>getViewById(this.page, "mapGridLayout");
-    this.mapGridLayout.rowSpan = 3;
+    this.mapGridLayout.rowSpan = 4;
 
     this.resultListLayout = <GridLayout>getViewById(this.page, "resultsListLayout");
 
@@ -110,10 +110,10 @@ export class MapComponent implements OnInit {
 
   async onMarkerSelect(args) {
     this.markerSelected = true;
-    this.showListView = false;
     try {
       const response: any =  await this.service.getCenterDetail(args.marker.userData.id);
       this.placeDetail = response.result;
+      this.showListView = false;
       this.showDetailView = true;
     }
     catch (err) {
@@ -130,7 +130,7 @@ export class MapComponent implements OnInit {
   
         if (this.items.length == 0) {
           this.showListView = false;
-          this.mapGridLayout.rowSpan = 3;
+          this.mapGridLayout.rowSpan = 4;
         }
         else {
           if (this.markerSelected) {
@@ -155,14 +155,15 @@ export class MapComponent implements OnInit {
     try {
       const response: any = await this.service.getBloodCenters(searchBar.text);
       this.items = response.results;
+      
+      this.mapView.latitude = response.placeLat;
+      this.mapView.longitude = response.placeLong;
+      this.setMarkers();
       if (this.items.length > 0) {
         this.showDetailView = false;
         this.showListView = true;
         this.mapGridLayout.rowSpan = 2;
       }
-      this.mapView.latitude = response.placeLat;
-      this.mapView.longitude = response.placeLong;
-      this.setMarkers();
     }
     catch (err) {
       console.log("Err: " + err);
@@ -174,7 +175,6 @@ export class MapComponent implements OnInit {
     let obj = this.markerList.find(marker => marker.userData.id === 'tattoo');
     //this.mapView.ios.selectedMarker = this.mapView.findMarker()
     this.markerSelected = true;
-    this.showListView = false;
     try {
       const response: any =  await this.service.getCenterDetail(item.place_id);
       this.placeDetail = response.result;
@@ -182,6 +182,7 @@ export class MapComponent implements OnInit {
       this.mapView.nativeView.selectedMarker = markerObj.ios;
       this.service.placeName = this.placeDetail.name;
       this.service.placeAddress = this.placeDetail.formatted_address;
+      this.showListView = false;
       this.showDetailView = true;
     }
     catch (err) {
